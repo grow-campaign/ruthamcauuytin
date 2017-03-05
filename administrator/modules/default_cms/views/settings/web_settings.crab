@@ -30,7 +30,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="app_name">App Name <span class="required">*</span></label>
-                                        <input required type="text" name="app_name" id="app_name" class="form-control"
+                                        <input spellcheck="false" required type="text" name="app_name" id="app_name" class="form-control"
                                                value="{{ meta.app_name }}">
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                         <label for="favicon">Favicon <span class="required">*</span></label>
 
                                         <div class="input-group">
-                                            <input required type="text" name="favicon" id="favicon" class="form-control"
+                                            <input  spellcheck="false" required type="text" name="favicon" id="favicon" class="form-control"
                                                    value="{{ meta.favicon }}">
                                             <span class="input-group-addon">
                                                  <img id="choose_favicon" class="direct-chat-img"
@@ -55,49 +55,49 @@
                             </div>
                             <div class="form-group">
                                 <label for="site_title">Site Title <span class="required">*</span></label>
-                                <input required type="text" name="site_title" id="site_title" class="form-control"
+                                <input  spellcheck="false" required type="text" name="site_title" id="site_title" class="form-control"
                                        value="{{ meta.site_title }}">
                             </div>
                             <div class="form-group">
                                 <label for="site_description">Site Description <span class="required">*</span></label>
-                                <input required type="text" name="site_description" id="site_description"
+                                <input  spellcheck="false" required type="text" name="site_description" id="site_description"
                                        class="form-control"
                                        value="{{ meta.site_description }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="site_image">Site Image <span class="required">*</span></label>
-                                <input required type="text" name="site_image" id="site_image" class="form-control"
+                                <input  spellcheck="false" required type="text" name="site_image" id="site_image" class="form-control"
                                        value="{{ meta.site_image }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="site_keywords">Keywords <span class="required">*</span></label>
-                                <input required type="text" name="site_keywords" id="site_keywords" class="form-control"
+                                <input  spellcheck="false" required type="text" name="site_keywords" id="site_keywords" class="form-control"
                                        value="{{ meta.site_keywords }}">
                             </div>
                         </div>
                         <div class="col-sm-5">
                             <div class="form-group">
                                 <label for="google_site_verification">Google Site Verification</label>
-                                <input type="text" name="google_site_verification" id="google_site_verification"
+                                <input  spellcheck="false" type="text" name="google_site_verification" id="google_site_verification"
                                        class="form-control" value="{{ meta.google_site_verification }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="number_item">Facebook App ID</label>
-                                <input type="text" name="fb_app_id" id="fb_app_id" class="form-control"
+                                <input  spellcheck="false" type="text" name="fb_app_id" id="fb_app_id" class="form-control"
                                        value="{{ meta.fb_app_id }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="geo_region">Geo Region</label>
-                                <input type="text" name="geo_region" id="geo_region" class="form-control"
+                                <input  spellcheck="false" type="text" name="geo_region" id="geo_region" class="form-control"
                                        value="{{ meta.geo_region }}">
                             </div>
                             <div class="form-group">
                                 <label for="copyright">Copyright</label>
-                                <input type="text" name="copyright" id="copyright" class="form-control"
+                                <input  spellcheck="false" type="text" name="copyright" id="copyright" class="form-control"
                                        value="{{ meta.copyright }}">
                             </div>
                         </div>

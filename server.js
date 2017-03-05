@@ -15,7 +15,7 @@ if (require('fs').existsSync('./config/config.json')) {
 
     // Install already
     let app = require('./bin/crab');
-    app.start(3000, {
+    app.start(2300, {
         debug: true
     });
     module.exports = app;

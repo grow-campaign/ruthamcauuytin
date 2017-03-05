@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!--[if IE 8]>
-<html lang="en" class="ie8"> <![endif]-->
+<html lang="vi" class="ie8"> <![endif]-->
 <!--[if IE 9]>
-<html lang="en" class="ie9"> <![endif]-->
+<html lang="vi" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<html lang="vi"> <!--<![endif]-->
 <head>
     <!-- Meta data -->
     <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/favicon_v1.png">
@@ -16,13 +16,13 @@
 
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="{{ meta.app_name }}">
-    <meta name="google-site-verification" content="{{ meta.google-site-verification }}"/>
+    <meta name="google-site-verification" content="{{ meta.google_site_verification }}"/>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-title" content="{{ meta.site_title }}">
-    <link rel="canonical" href="http://100dayproject.org"/>
-    <link rel="shortlink" href="http://100dayproject.org/"/>
+    <link rel="canonical" href="http://ruthamcauuytin.net"/>
+    <link rel="shortlink" href="http://ruthamcauuytin.net/"/>
     <meta name="geo.region" content="{{ meta.geo_region }}"/>
     <meta name="RATING" content="GENERAL"/>
     <meta name="Googlebot" content="index,follow,archive">
@@ -30,10 +30,11 @@
     <meta name="DISTRIBUTION" content="GLOBAL"/>
     <meta http-equiv="EXPIRES" content="0"/>
     <meta name="RESOURCE-TYPE" content="DOCUMENT"/>
+    <meta name="GENERATOR" content="100dayproject Group"/>
     <meta name="COPYRIGHT" content="{{ meta.copyright }}"/>
 
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:site" content="@100dayproject"/>
+    <meta name="twitter:site" content="@ruthamcauuytin"/>
     <meta name="twitter:title" content="{{ meta.site_title }}"/>
     <meta name="twitter:description" content="{{ meta.site_description }}"/>
     <meta name="twitter:image" content="{{ meta.site_image }}"/>
@@ -45,9 +46,9 @@
     <meta property="og:image" content="{{ meta.site_image }}"/>
     <meta property="og:image:width" content="200"/>
     <meta property="og:image:height" content="200"/>
-    <meta property="og:url" content="http://100dayproject.org">
+    <meta property="og:url" content="http://ruthamcauuytin.net">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US"/>
+    <meta property="og:locale" content="vi_VN"/>
 
     <meta itemprop="name" content="{{ meta.app_name }}">
     <meta itemprop="description" content="{{ meta.site_description }}">
