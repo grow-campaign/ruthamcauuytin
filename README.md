@@ -1,8 +1,12 @@
-# ruthamcauuytin
+# ruthamcauuytin 
+
+### Xem trang web: ([http://ruthamcauuytin.net](http://ruthamcauuytin.net))
 
 Dự án website giới thiệu sản phẩm và dịch vụ cho công ty Duy Bảo (chuyên cung cấp dịch vụ, giải pháp để xử lý ô nhiểm môi trường), được xây dựng theo kiến trúc `monolithic`, sử dụng `Node.js` là ngôn ngữ chính của toàn dự án. 
 
 > :cocktail: Sử dụng [crab.js](https://github.com/crabjs/crabjs-cms) cms để phát triển dự án.
+
+> Mục tiêu của dự án: Công ty có website giới thiệu về các sản phẩm & dịch vụ của công ty, tập trung nhiều vào phần nội dung trên trang web để giúp tối ưu SEO.
 
 **Quy mô dự án:** Nhỏ
 
@@ -41,5 +45,17 @@ Dự án website giới thiệu sản phẩm và dịch vụ cho công ty Duy B�
 4. Đẩy mã nguồn của bạn lên nhánh: `git push origin my-new-feature`
 
 5. Gửi yêu cầu chức năng.
+
+## Bản quyền
+
+Đây là dự án chạy thật cho công ty Duy Bảo và đã được sự đồng ý của công ty để đưa dự án trở thành 1 mã nguồn mở. Các bạn hoàn toàn có thể sao chép hoặc sử dụng mã nguồn để làm những sản phẩm riêng của các bạn, nếu có thể vui lòng để bản quyền của mã nguồn thuộc về `100dayproject Group`.
+
+Tại sao tôi thực hiện làm các dự án mã nguồn mở? 
+
++ Giúp các bạn có thể tiếp cận nhanh với lập trình
++ Nắm được những kinh nghiệm cần thiết khi làm sản phẩm thực tế
++ Trau dồi thêm kiến thức khi thực hiện dự án
++ Dễ dàng ứng tuyển vào nhiều công ty nếu đã từng làm các dự án nguồn mở
++ Đóng góp cho cộng đồng
 
 
