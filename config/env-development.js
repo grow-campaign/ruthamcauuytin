@@ -46,8 +46,8 @@ module.exports = {
         callbackURL: '/auth/facebook/callback'
     },
     googleAuth: {
-        clientID: '964145041642-do0aeu2fc6vb6qnt2c4r7rd3ro0ju7av.apps.googleusercontent.com',
-        clientSecret: '5F07ksmH6HUoZRRum38rmuOp',
+        clientID: '233633906212-m12irl49in5vb0ea8aveam64dsig96f1.apps.googleusercontent.com',
+        clientSecret: 'D_BUUoE1AvzZH2Q5HQoz8hgc',
         callbackURL: '/auth/google/callback'
     },
     nodeAnalytics: {
