@@ -5,7 +5,6 @@ node_modules/
 .DS_Store
 dbBackup/.DS_Store
 dbBackup/dump/.DS_Store
-bower_components/
 public/images/Thumbs.db
 public/images/filetypes/Thumbs.db
 public/images/filetypes/big/Thumbs.db
