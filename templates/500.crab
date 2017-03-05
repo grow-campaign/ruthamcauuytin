@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>An Error Occurred: Internal Server Error</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1">
+    <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/uploads/icons/favicon.ico">
+</head>
+<body>
+<h1>Oops! An Error Occurred</h1>
+
+<h2>The server returned a "500 Internal Server Error".</h2>
+
+<div>
+    Something is broken. Please let us know what you were doing when this error occurred.
+    We will fix it as soon as possible. Sorry for any inconvenience caused.
+</div>
+
+</body>
+</html>

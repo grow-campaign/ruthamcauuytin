@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="generator" content="CrabJS! - Open Source Support For Startup"/>
+    <link href="/resource/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <title>{{ title }}</title>
+    {#<base href="http://100dayproject.org"/>#}
+
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/united/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    {% block cssExtends %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CrabJS</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Installer</a></li>
+                <li><a href="http://crabjs.100dayproject.org/docs" target="_blank">Documentation</a></li>
+                <li><a href="http://crabjs.100dayproject.org/demo" target="_blank">Demo</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block content_body %}{% endblock %}
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+{% block jsExtends %}{% endblock %}
+
+</body>
+</html>

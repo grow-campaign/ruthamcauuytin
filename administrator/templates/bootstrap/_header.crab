@@ -1,0 +1,112 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/{{ admin_prefix }}/dashboard" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>A</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>{{ app_name }}</b> System</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Bạn không có tin nhắn</li>
+                        <li>
+                            <!-- inner menu: contains the messages -->
+                            <ul class="menu">
+                                {#<li><!-- start message -->#}
+                                    {#<a href="#">#}
+                                    {#<div class="pull-left">#}
+                                    {#<!-- User Image -->#}
+                                    {#<img src="/partial/images/noAvatar.gif" class="img-circle"#}
+                                    {#alt="User Image">#}
+                                    {#</div>#}
+                                    {#<!-- Message title and timestamp -->#}
+                                    {#<h4>#}
+                                    {#Hailp#}
+                                    {#<small><i class="fa fa-clock-o"></i> 5 mins</small>#}
+                                    {#</h4>#}
+                                    {#<!-- The message -->#}
+                                    {#<p>What wrong with you?</p>#}
+                                    {#</a>#}
+                                {#</li>#}
+                                <!-- end message -->
+                            </ul>
+                            <!-- /.menu -->
+                        </li>
+                        <li class="footer"><a href="#">Xem tất cả</a></li>
+                    </ul>
+                </li>
+                <!-- /.messages-menu -->
+
+                <!-- Notifications Menu -->
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header"></li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                            <ul class="menu">
+                                <!-- start notification -->
+                                <!-- end notification -->
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">Xem tất cả</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Account Menu -->
+                <li class="dropdown user user-menu">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <!-- The user image in the navbar-->
+                        <img src="{{ user.avatar or '/images/noAvatar.gif' }}" class="user-image" alt="100dayproject member">
+                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                        <span class="hidden-xs">{{ user.display_name }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- The user image in the menu -->
+                        <li class="user-header">
+                            <img src="{{ user.avatar or '/images/noAvatar.gif' }}" class="img-circle" alt="100dayproject member">
+                            <p>{{ user.display_name }}<small>Đăng nhập gần đây: {{ user.last_login_date|dateFormat }}</small></p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="/{{ admin_prefix }}/users/view/{{ user._id }}" class="btn btn-default btn-flat">Tài
+                                    khoản</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="/logout" class="btn btn-default btn-flat">Đăng xuất</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                <li>
+                    <a href="/{{ admin_prefix }}/system/report" class="hint--left" data-hint="Gửi tin nhắn tới hệ thống">
+                        <i class="fa fa-bug"></i>
+                        <span class="label label-danger">9</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

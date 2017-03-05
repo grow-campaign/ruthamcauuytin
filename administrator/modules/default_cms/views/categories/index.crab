@@ -1,0 +1,116 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    {{ super() }}
+    <link rel="stylesheet" href="/bower_components/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css">
+{% endblock %}
+
+{% block toolbarExtends %}
+    <div class="row">
+        <div class="col-md-12 col-sm-12" style="margin-bottom: 10px">
+            <form method="post">
+                <input type="hidden" name="_csrf" value="{{ _csrf  }}">
+                <div class="col-md-6 col-sm-6">
+                    <div class="row">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-plus"></i></span>
+                            <input type="text" class="form-control" name="name">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary btn-flat" type="submit">Thêm mới</button>
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_body %}
+    {% for category in categories %}
+        <tr>
+            <td><input type="checkbox" class="check-element" name="ids[]" value="{{ category._id }}"></td>
+            <td>
+                <a id="name" href="#" data-name="name" class="inline-edit editable editable-click"
+                   data-url="/admin/categories/{{ category._id }}"
+                   data-type="text" data-pk="{{ category._id }}">{{ category.name }}</a>
+            </td>
+            <td>
+                <a href="#" data-name="alias" class="inline-edit editable editable-click"
+                   data-url="/admin/categories/{{ category._id }}"
+                   data-type="text" data-pk="{{ category._id }}" data-title="Enter alias">{{ category.alias }}</a>
+            </td>
+            <td>
+                <span style="cursor: pointer" class="hint--top hint--info"
+                      data-hint="{{ category.created_at|moment }}">{{ category.created_at|dateFormat }}</span>
+            </td>
+            <td>
+                {% if category.status == 0 %}
+                    <span class="label label-success">Index</span>
+                {% else %}
+                    <span class="label label-primary">Uncategories</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block jsExtends %}
+    {{ super() }}
+    <script src="/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <script>
+        $.fn.editable.defaults.mode = 'inline';
+        $(document).ready(function () {
+            $('.inline-edit').editable({
+                type: 'text',
+                success: function (response, newValue) {
+                    if (response != null) {
+                        var type, icon, title;
+                        var wrap = $('.content-wrapper');
+
+                        if (response.type == 'success') {
+                            type = 'success';
+                            icon_class = 'fa-check'
+                        } else {
+                            type = 'danger';
+                            icon_class = 'fa-warning'
+                        }
+
+                        var child = wrap.find('.flashBox');
+                        if (child.length > 0) {
+                            child.remove();
+                        }
+                        let hasMsg = $('.content').find('div.alert');
+                        if (hasMsg.length != 0) hasMsg.remove();
+
+                        var content = `<div class="col-md-12 col-sm-12 col-xs-12 flashBox" style="padding-top: 15px"><div class="alert alert-${type} alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <i class="icon fa ${icon_class}"></i>${response.message}</div></div>`;
+                        wrap.prepend(content);
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function deleteRecords() {
+            var ids = [];
+            $("input:checkbox[name='ids[]']:checked").each(function () {
+                ids.push($(this).val());
+            });
+            if (ids.length > 0) {
+                $.ajax({
+                    url: `/{{ admin_prefix }}/categories`,
+                    type: 'DELETE',
+                    data: {
+                        ids: ids
+                    },
+                    success: function (result) {
+                        window.location.href = `/{{ admin_prefix }}/categories`;
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

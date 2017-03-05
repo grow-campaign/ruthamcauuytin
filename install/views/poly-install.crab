@@ -1,0 +1,155 @@
+<dom-module id="poly-install">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+
+        </style>
+        <div class="container ">
+            <p>
+            <h1>Welcome to the CrabJS Installer</h1>
+            You are just a few steps away from launching your own CrabJS content management!
+            </p>
+            <form id="install" action="/" method="post">
+                <div class="admin">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="row input-row">
+                                <h1>
+                                    <small>Create an Administrator account</small>
+                                </h1>
+                                <hr>
+                            </div>
+
+                            <div class="row input-row">
+                                <label for="admin:username">Username</label>
+                                <input type="text" class="form-control" name="admin:username" value=""
+                                       placeholder="Username"/>
+                            </div>
+                            <div class="row input-row">
+                                <label for="admin:email">Email Address</label>
+                                <input type="text" class="form-control" name="admin:email" value=""
+                                       placeholder="Email Address"/>
+                            </div>
+                            <div class="row input-row">
+                                <label for="admin:password">Password</label>
+                                <input type="password" class="form-control" name="admin:password" value=""
+                                       placeholder="Password"/>
+                            </div>
+                            <div class="row input-row">
+                                <label for="admin:passwordConfirm">Confirm Password</label>
+                                <input type="password" class="form-control" name="admin:password" value=""
+                                       placeholder="Password"/>
+                            </div>
+                            <div class="col-sm-5 help-text" data-help="Please confirm your password."></div>
+                        </div>
+
+                        <div class="col-sm-offset-1 col-sm-5 hidden-xs">
+                            <div class="row input-row">
+                                <h1>
+                                    <small>Administrator account information</small>
+                                </h1>
+                                <hr>
+                            </div>
+
+                            <div class="row" style="height: 345px">
+                                <paper-material elevation="1"
+                                                style="height: 100%;    background: linear-gradient(to right, #388E3C 0, #388E3C 9px, #fff 10px, #fff 100%) no-repeat;"></paper-material>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <div class="row input-row">
+                                <h1>
+                                    <small>Configure your database</small>
+                                </h1>
+                                <hr>
+                            </div>
+
+                            <div class="row input-row">
+                                <label for="mongo:host">Host IP or address of your MongoDB instance</label>
+                                <input is="iron-input" bind-value="[[hostInput]]" name="q" autocomplete="off"
+                                       class="search-field" id="search-field"
+                                       placeholder="Search...">
+
+                                <input bind-value="[[hostInput]]" type="text" class="form-control" name="mongo:host" placeholder="127.0.0.1"
+                                       value="127.0.0.1"/>
+                            </div>
+                            <div class="row input-row">
+                                <label for="mongo:port">Host port of your MongoDB instance</label>
+                                <input type="text" class="form-control" name="mongo:port" placeholder="27017"
+                                       value="27017"/>
+                            </div>
+                            <div class="row input-row">
+                                <label for="mongo:username">MongoDB username</label>
+                                <input type="text" class="form-control" name="mongo:username" placeholder="" value=""/>
+                            </div>
+                            <div class="row input-row">
+                                <label for="mongo:password">Password of your MongoDB database</label>
+                                <input type="text" class="form-control" name="mongo:password" placeholder="" value=""/>
+                            </div>
+
+                            <div class="row input-row">
+                                <label for="mongo:database">Which database to use</label>
+                                <input type="text" class="form-control" name="mongo:database" placeholder="0" value="0"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-offset-1 col-sm-5 hidden-xs">
+                            <div class="row input-row">
+                                <h1>
+                                    <small>Database configuration information</small>
+                                </h1>
+                                <hr>
+                            </div>
+
+                            <div class="row" style="height: 345px">
+                                <paper-material elevation="1"
+                                                style="height: 100%;    background: linear-gradient(to right, #388E3C 0, #388E3C 9px, #fff 10px, #fff 100%) no-repeat;">
+
+                                    <img height="345px" style="padding-left: 50px;transform: rotate(47deg); opacity: .4"
+                                         src="logo-mongodb-ondark.png" alt="Mongodb database">
+
+                                    <ul>
+                                        <li>Host IP: [[hostInput]]</li>
+                                        <li>Host Port: 27017</li>
+                                        <li>Mongodb username: crab</li>
+                                        <li>Mongodb password: 100dayproject</li>
+                                        <li>Database name: crabjs</li>
+                                    </ul>
+
+                                    <div class="row">
+
+                                    </div>
+                                </paper-material>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-12 text-right" style="padding-right: 0; padding-top: 20px">
+                            <button id="submit" type="button" class="btn btn-success">Install CrabJS <i
+                                        class="fa fa-spinner fa-spin hide"></i></button>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <button id="submit" type="button" class="btn btn-success">Test connection <i
+                                    class="fa fa-spinner fa-spin hide"></i></button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </template>
+    <script>
+        "use strict";
+        Polymer({
+            is: 'poly-install'
+        });
+    </script>
+</dom-module>

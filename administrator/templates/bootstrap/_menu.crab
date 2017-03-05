@@ -1,0 +1,16 @@
+<aside class="main-sidebar">
+
+    <section class="sidebar" style="height: auto;">
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            {% if user.settings.menu %}
+                {{ user.settings.menu|safe }}
+            {% else %}
+                {{ 'Hệ thống,ILearn'|get_menu_data(user) }}
+            {% endif %}
+        </ul>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>

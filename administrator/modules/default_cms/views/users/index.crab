@@ -1,0 +1,64 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    {{ super() }}
+{% endblock %}
+
+{% block content_body %}
+    {% for user in users %}
+        <tr>
+            <td><input type="checkbox" class="check-element" name="ids[]" value="{{ user._id }}"></td>
+            <td>
+                <a href="/{{ admin_prefix }}/users/view/{{ user._id }}">
+                    <span>{{ user.display_name }}</span>
+                </a>
+            </td>
+            <td>{{ user.email }}</td>
+            <td>
+                {% if user.type == 0 %}
+                    <span class="label label-danger">Quản trị</span>
+                    <a href="/{{ admin_prefix }}/roles/view/{{ user.role_id._id }}">
+                        <span class="label label-primary">{{ user.role_id.name }}</span>
+                    </a>
+                    {% elif user.type == -1 %}
+                    <span class="label label-primary">Người dùng</span>
+                {% endif %}
+            </td>
+            <td>{{ user.last_login_date|moment }}</td>
+            <td>
+                {% if user.status == 'Available' %}
+                    <span class="label label-success">Kích hoạt</span>
+                    {% elif user.status == 'Pending' %}
+                    <span class="label label-warning">Chờ kích hoạt</span>
+                {% else %}
+                    <span class="label label-danger">Khóa</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+
+{% endblock %}
+
+{% block jsExtends %}
+    {{ super() }}
+    <script>
+        function deleteRecords() {
+            var ids = [];
+            $("input:checkbox[name='ids[]']:checked").each(function () {
+                ids.push($(this).val());
+            });
+            if (ids.length > 0) {
+                $.ajax({
+                    url: `/{{ admin_prefix }}/users`,
+                    type: 'DELETE',
+                    data: {
+                        ids: ids
+                    },
+                    success: function (result) {
+                        window.location.href = `/{{ admin_prefix }}/users`;
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

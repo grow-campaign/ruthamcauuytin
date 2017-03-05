@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/uploads/icons/favicon.ico" type="image/x-icon">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Login - Crab.JS</title>
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: {families: ['Open+Sans:400,300italic,300,600,400italic,600italic,700,700italic,800,800italic:latin']}
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })(); </script>
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="/css/_login.css">
+</head>
+
+<body>
+<div class="login-form">
+    <form method="post" id="frmLogin">
+        <input type="hidden" name="_csrf" value="{{ _csrf }}">
+        <h1>{{ app_name }}</h1>
+        {% if messages.info or messages.danger %}
+            <section class="animated fadeInUp">
+                <div class="messages-{% if messages.info %}success{% else %}error{% endif %} animated">
+                    <span class="alert">
+                        {% if messages.info %}{{ messages.info[0] }}{% else %}{{ messages.danger[0] }}{% endif %}
+                    </span>
+                </div>
+            </section>
+        {% endif %}
+        {% if messages.error %}
+            <section class="animated fadeInUp">
+                <div class="messages animated">
+                    <span class="alert">{{ messages.error[0] }}</span>
+                </div>
+            </section>
+        {% endif %}
+        <a id="login-google" href="/auth/google">
+            <button type="button" class="button button-large google-login">
+                <img src="/images/google_whiteg.png">
+                <span>Sign in with Google</span>
+            </button>
+        </a>
+
+        <div class="crab-msg">
+            <img src="/images/loader-small.gif">
+            <span>One moment...</span>
+        </div>
+
+        <div class="form-divider">
+            <span>or</span>
+        </div>
+        <div class="form-group frm-email">
+            <input tabindex="1" autofocus type="text" class="form-control" placeholder="Email" id="email" name="email">
+            <label class="error email-msg"></label>
+        </div>
+        <div class="form-group frm-password">
+            <input tabindex="2" type="password" class="form-control" placeholder="Password" id="password" name="password">
+            <label class="error password-msg"></label>
+        </div>
+        <a tabindex="3" class="link" href="/forgot_password.crab">Lost your password?</a>
+        <button tabindex="4" type="submit" class="log-btn">Sign in</button>
+    </form>
+</div>
+<script src='/bower_components/jquery/dist/jquery.min.js'></script>
+<script src="/js/_login.js"></script>
+</body>
+</html>

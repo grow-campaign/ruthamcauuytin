@@ -1,0 +1,35 @@
+{
+  "name": "life-parser",
+  "description": "Lifetime of the research reactor",
+  "main": "server.js",
+  "authors": [
+    "Vietworm"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "life-parser",
+    "nodejs",
+    "WebSphere",
+    "Crab.JS"
+  ],
+  "moduleType": [],
+  "homepage": "http://100dayproject.org",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cropper": "^2.3.4",
+    "animate.css": "^3.5.2",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "jquery-ui": "^1.12.1",
+    "snackbarjs": "^1.1.0",
+    "hint.css": "^2.4.1",
+    "Ionicons": "ionicons#^2.0.1",
+    "x-editable": "^1.5.1"
+  }
+}

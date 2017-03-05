@@ -1,0 +1,68 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    {{ super() }}
+{% endblock %}
+
+{% block content_body %}
+    {% for post in posts %}
+        <tr>
+            <td><input type="checkbox" class="check-element" name="ids[]" value="{{ post._id }}"></td>
+            <td>
+                <a href="/{{ admin_prefix }}/posts/view/{{ post._id }}">{{ post.title }}
+                    {% if post.tags[0] == 'page_index' %}
+                        <span class="pull-right label label-danger hint--top hint--info"
+                              data-hint="Nội dung hiển thị trang chủ">page_index</span>
+                        {% elif post.tags[0] == 'project_index' %}
+                        <span class="pull-right label label-danger hint--top hint--info"
+                              data-hint="Dự án đang xây dựng">project_index</span>
+                    {% endif %}
+                </a>
+            </td>
+            <td>{{ post.alias }}</td>
+            <td>
+                <a href="/{{ admin_prefix }}/users/view/{{ post.authors._id }}">
+                    <span class="label label-{% if post.authors._id|toString() == user._id|toString() %}warning{% else %}primary{% endif %}">{{ post.authors.display_name or post.authors.displayName }}</span>
+                </a>
+            </td>
+            <td><span style="cursor: pointer" class="hint--top hint--info"
+                      data-hint="{{ post.created_at|moment }}">{{ post.created_at|dateFormat }}</span></td>
+            <td>
+                {% if post.status == 0 %}
+                    <span class="label label-success">Phát hành</span>
+                {% else %}
+                    <span class="label label-warning">Bản nháp</span>
+                {% endif %}
+
+                {% if post.password|trim %}
+                    <span class="label label-warning">Mật khẩu</span>
+                {% endif %}
+
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block jsExtends %}
+    {{ super() }}
+    <script>
+        function deleteRecords() {
+            var ids = [];
+            $("input:checkbox[name='ids[]']:checked").each(function () {
+                ids.push($(this).val());
+            });
+            if (ids.length > 0) {
+                $.ajax({
+                    url: `/{{ admin_prefix }}/posts`,
+                    type: 'DELETE',
+                    data: {
+                        ids: ids
+                    },
+                    success: function (result) {
+                        window.location.href = `/{{ admin_prefix }}/posts`;
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    <link rel="import" href="/components/paper-material/paper-material.html">
+    <link rel="import" href="/components/paper-toggle-button/paper-toggle-button.html">
+    <style is="custom-style">
+        paper-toggle-button.green {
+            --paper-toggle-button-checked-bar-color: var(--paper-green-500);
+            --paper-toggle-button-checked-button-color: var(--paper-green-500);
+            --paper-toggle-button-checked-ink-color: var(--paper-green-500);
+            --paper-toggle-button-unchecked-bar-color: var(--paper-teal-500);
+            --paper-toggle-button-unchecked-button-color: var(--paper-teal-500);
+            --paper-toggle-button-unchecked-ink-color: var(--paper-teal-500);
+        }
+
+        paper-toggle-button.pink {
+            --paper-toggle-button-checked-bar-color: var(--paper-pink-500);
+            --paper-toggle-button-checked-button-color: var(--paper-pink-500);
+            --paper-toggle-button-checked-ink-color: var(--paper-pink-500);
+            --paper-toggle-button-unchecked-bar-color: var(--paper-indigo-900);
+            --paper-toggle-button-unchecked-button-color: var(--paper-indigo-900);
+            --paper-toggle-button-unchecked-ink-color: var(--paper-indigo-900);
+        }
+    </style>
+{% endblock %}
+
+{% block content_body %}
+    <div class="container ">
+        <p>
+        <h1>Welcome to the CrabJS Installer</h1>
+        You are just a few steps away from launching your own CrabJS content management!
+        </p>
+        <form id="install" method="post">
+            <div class="admin">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="row input-row">
+                            <h1>
+                                <small>Create an Administrator account</small>
+                            </h1>
+                            <hr>
+                        </div>
+
+                        <div class="row input-row">
+                            <label for="username">Username</label>
+                            <input autocomplete="off" id="username" type="text" class="form-control" name="username"
+                                   placeholder="Username"/>
+                        </div>
+                        <div class="row input-row">
+                            <label for="email">Email Address</label>
+                            <input autocomplete="off" id="email" type="email" class="form-control" name="email"
+                                   placeholder="Email Address"/>
+                        </div>
+                        <div class="row input-row">
+                            <label for="password">Password</label>
+                            <input autocomplete="off" type="password" class="form-control" name="password"
+                                   placeholder="Password"/>
+                        </div>
+                        <div class="row input-row">
+                            <label for="passwordConfirm">Confirm Password</label>
+                            <input autocomplete="off" type="password" class="form-control" name="passwordConfirm"
+                                   placeholder="Password"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-1 col-sm-5 hidden-xs">
+                        <div class="row input-row">
+                            <h1>
+                                <small>Administrator account information</small>
+                            </h1>
+                            <hr>
+                        </div>
+
+                        <div class="row" style="height: 345px">
+                            <paper-material elevation="1" class="border-green">
+
+                                <ul>
+                                    <li>Username: <span id="bind-username"></span></li>
+                                    <li>Email address: <span id="bind-email"></span></li>
+                                </ul>
+
+                            </paper-material>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="row input-row">
+                            <h1>
+                                <small>Configure your database</small>
+                            </h1>
+                            <hr>
+                        </div>
+
+                        <div class="row input-row">
+                            <label for="host">Host IP or address of your MongoDB instance</label>
+                            <input id="host" type="text" class="form-control" name="host"
+                                   placeholder="127.0.0.1"/>
+                        </div>
+                        <div class="row input-row">
+                            <label for="port">Host port of your MongoDB instance</label>
+                            <input id="port" type="text" class="form-control" name="port" placeholder="27017"/>
+                        </div>
+                        <div class="row input-row">
+                            <label for="dbUsername">MongoDB username</label>
+                            <input id="dbUsername" type="text" class="form-control" name="dbUsername"/>
+                        </div>
+                        <div class="row input-row">
+                            <label for="dbPassword">Password of your MongoDB database</label>
+                            <input id="dbPassword" type="text" class="form-control" name="dbPassword"/>
+                        </div>
+
+                        <div class="row input-row">
+                            <label for="dbName">Which database to use</label>
+                            <input id="dbName" type="text" class="form-control" name="dbName" placeholder="crab"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-1 col-sm-5 hidden-xs">
+                        <div class="row input-row">
+                            <h1>
+                                <small>Database configuration information</small>
+                            </h1>
+                            <hr>
+                        </div>
+
+                        <div class="row" style="height: 345px">
+                            <paper-material elevation="1" class="border-green">
+
+                                <ul>
+                                    <li>Host IP: <span id="bind-host"></span></li>
+                                    <li>Host Port: <span id="bind-port"></span></li>
+                                    <li>Mongodb username: <span id="bind-dbUsername"></span></li>
+                                    <li>Mongodb password: <span id="bind-dbPassword"></span></li>
+                                    <li>Database name: <span id="bind-dbName"></span></li>
+                                </ul>
+                                <div class="database-info">
+
+                                </div>
+                            </paper-material>
+                        </div>
+
+                        <div class="col-xs-6" style="z-index: 2">
+                            <paper-toggle-button name="social" class="green" checked>Site Offline</paper-toggle-button>
+                        </div>
+                        <div class="col-xs-6 text-right" style="z-index: 2">
+                            <button id="submit" type="submit" class="btn btn-success">Install CrabJS <i
+                                        class="fa fa-spinner fa-spin hide"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row padding">
+                    <button id="testConnect" type="submit" class="btn btn-success">Test connection <i
+                                class="fa fa-spinner fa-spin hide"></i></button>
+                    <button style="display: none" id="installCrab" type="submit" class="btn btn-success">Install Crab <i
+                                class="fa fa-spinner fa-spin hide"></i></button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
+
+{% block jsExtends %}
+    <script src="/components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="main.js"></script>
+{% endblock %}

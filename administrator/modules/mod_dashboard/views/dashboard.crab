@@ -1,0 +1,218 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    <style>
+        .users-list i {
+            color: #4CAF50;
+            position: absolute;
+            right: 22px;
+            font-size: 10px;
+        }
+
+        .box-loading {
+            padding: 10px;
+            text-align: center;
+            margin-left: -50px;
+        }
+
+        .loading {
+            display: inline-block;
+            margin: auto;
+            text-align: center;
+            width: 15px;
+            height: 15px;
+            background: transparent;
+            border-radius: 100%;
+            box-shadow: 15px 0 #0e66d4, 30px 0 #ff0080;
+            animation: flickr 1s linear infinite;
+        }
+
+        @keyframes flickr {
+            50% {
+                box-shadow: 30px 0 #0e66d4, 15px 0 #ff0080;
+            }
+            50.1% {
+                box-shadow: 15px 0 #ff0080, 30px 0 #0e66d4;
+            }
+            100% {
+                box-shadow: 30px 0 #ff0080, 15px 0 #0e66d4;
+            }
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{ re[0] }}</h3>
+
+                    <p>Bài viết</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-newspaper-o"></i>
+                </div>
+                <a href="/{{ admin_prefix }}/posts" class="small-box-footer">Xem chi tiết <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>Tin nhắn</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-commenting-o"></i>
+                </div>
+                <a href="#messages" class="small-box-footer">Xem chi tiết <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>{{ re[1] }}</h3>
+                    <p>Thành viên</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/{{ admin_prefix }}/users" class="small-box-footer">Xem chi tiết <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>Logs hệ thống</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user-md"></i>
+                </div>
+                <a href="#" class="small-box-footer">Xem chi tiết <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Thông tin hệ thống</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-center">
+                                <h-realTime></h-realTime>
+                            </p>
+
+                            <div class="chart">
+                                <!-- Sales Chart Canvas -->
+                                <canvas id="salesChart" style="height: 177px; width: 651px;" width="651"
+                                        height="177"></canvas>
+                            </div>
+                            <!-- /.chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                            <div class="progress-group">
+                                <span class="progress-text">Add Products to Cart</span>
+                                <span class="progress-number"><b>160</b>/200</span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                            <div class="progress-group">
+                                <span class="progress-text">Complete Purchase</span>
+                                <span class="progress-number"><b>310</b>/400</span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-xs-4 text-center">
+                            <div class="progress-group">
+                                <span class="progress-text">Visit Premium Page</span>
+                                <span class="progress-number"><b>480</b>/800</span>
+
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Đang trực tuyến</h3>
+                    <div class="box-tools pull-right">
+                        <span id="count_users" class="label label-danger"></span>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <ul class="users-list clearfix">
+                    </ul>
+                    <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <a href="javascript:void(0)" class="uppercase">Xem tất cả</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

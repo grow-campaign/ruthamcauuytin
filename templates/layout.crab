@@ -1,0 +1,2 @@
+{% set fileLoader="layout.crab"|get_theme('frontend') %}
+{% extends fileLoader %}

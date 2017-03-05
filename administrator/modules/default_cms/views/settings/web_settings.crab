@@ -1,0 +1,131 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+
+    <style>
+        #choose_favicon {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" action="/{{ admin_prefix }}/settings?_csrf={{ _csrf }}">
+        <input type="hidden" name="_csrf" value="{{ _csrf }}">
+        <input type="file" hidden name="favicon_image">
+
+        {{ toolbar|safe }}
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="site-setting">
+                        <div class="col-sm-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="app_name">App Name <span class="required">*</span></label>
+                                        <input required type="text" name="app_name" id="app_name" class="form-control"
+                                               value="{{ meta.app_name }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <label for="favicon">Favicon <span class="required">*</span></label>
+
+                                        <div class="input-group">
+                                            <input required type="text" name="favicon" id="favicon" class="form-control"
+                                                   value="{{ meta.favicon }}">
+                                            <span class="input-group-addon">
+                                                 <img id="choose_favicon" class="direct-chat-img"
+                                                      src="{{ meta.favicon }}"
+                                                      alt="{{ meta.app_name }}">
+                                            </span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="site_title">Site Title <span class="required">*</span></label>
+                                <input required type="text" name="site_title" id="site_title" class="form-control"
+                                       value="{{ meta.site_title }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="site_description">Site Description <span class="required">*</span></label>
+                                <input required type="text" name="site_description" id="site_description"
+                                       class="form-control"
+                                       value="{{ meta.site_description }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="site_image">Site Image <span class="required">*</span></label>
+                                <input required type="text" name="site_image" id="site_image" class="form-control"
+                                       value="{{ meta.site_image }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="site_keywords">Keywords <span class="required">*</span></label>
+                                <input required type="text" name="site_keywords" id="site_keywords" class="form-control"
+                                       value="{{ meta.site_keywords }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="google_site_verification">Google Site Verification</label>
+                                <input type="text" name="google_site_verification" id="google_site_verification"
+                                       class="form-control" value="{{ meta.google_site_verification }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="number_item">Facebook App ID</label>
+                                <input type="text" name="fb_app_id" id="fb_app_id" class="form-control"
+                                       value="{{ meta.fb_app_id }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="geo_region">Geo Region</label>
+                                <input type="text" name="geo_region" id="geo_region" class="form-control"
+                                       value="{{ meta.geo_region }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="copyright">Copyright</label>
+                                <input type="text" name="copyright" id="copyright" class="form-control"
+                                       value="{{ meta.copyright }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block jsExtends %}
+    <script>
+        $('#choose_favicon').click(function(){
+            $('input[name="favicon_image"]').click();
+        });
+
+        $('input[name="favicon_image"]').on('change', function(input){
+            if (input.target.files && input.target.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#choose_favicon').attr('src', e.target.result)
+                            .width(20)
+                            .height(20);
+                };
+
+                reader.readAsDataURL(input.target.files[0]);
+            }
+        });
+    </script>
+{% endblock %}

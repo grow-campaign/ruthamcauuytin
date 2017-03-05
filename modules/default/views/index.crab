@@ -1,0 +1,143 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    <style>
+        .img-customer {
+            border-radius: 50%;
+            height: 125px;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!--=== Breadcrumbs v3 ===-->
+    <div class="breadcrumbs-v3 img-v3 text-center">
+        <div class="container">
+            <h1>RÚT HẦM CẦU DUY BẢO</h1>
+            <p>Cung cấp các giải pháp, dịch vụ giúp môi trường xanh sạch đẹp.</p>
+        </div><!--/end container-->
+    </div>
+    <!--=== End Breadcrumbs v3 ===-->
+
+    <div class="container content-sm">
+        <div class="headline-center margin-bottom-60">
+            <h2>Rút hầm cầu - Thông cống nghẹt tại TP Hồ Chí Minh</h2>
+            <p>Với kinh nghiệm làm việc lâu năm trong lĩnh vực này<br>
+                Chúng tôi <strong>tự tin</strong> sẽ làm khách hàng hài lòng với những dịch vụ mà chúng tôi mang tới.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 md-margin-bottom-50">
+                <img class="img-responsive" src="/images/cong-nhan.JPG" alt="Công nhân làm việc"
+                     style="border-radius: 2px;">
+            </div>
+            <div class="col-md-6">
+                <p>Những giá trị mà dịch vụ chúng tôi có thể cung cấp tới khách hàng.</p><br>
+                <div class="row">
+                    <ul class="col-xs-6 list-unstyled lists-v1">
+                        <li><i class="fa fa-angle-right"></i>Đảm bảo uy tín</li>
+                        <li><i class="fa fa-angle-right"></i>Áp dụng nhiều chương trình khuyến mãi</li>
+                        <li><i class="fa fa-angle-right"></i>Hỗ trợ nhiệt tình</li>
+                        <li><i class="fa fa-angle-right"></i>Luôn áp dụng công nghệ & giải pháp mới</li>
+                    </ul>
+                    <ul class="col-xs-6 list-unstyled lists-v1">
+                        <li><i class="fa fa-angle-right"></i>Phục vụ khách hàng 24/7</li>
+                        <li><i class="fa fa-angle-right"></i>Chu đáo & nhiệt tình</li>
+                        <li><i class="fa fa-angle-right"></i>Đảm bảo tiến độ công trình</li>
+                        <li><i class="fa fa-angle-right"></i>Mức giá hợp lý</li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--/end row-->
+    </div>
+
+    <!--=== Purchase Block ===-->
+    <div class="purchase">
+        <div class="container overflow-h">
+            <div class="row">
+                <div class="col-md-9 animated fadeInLeft">
+                    <span>Rút hầm cầu Duy Bảo</span>
+                    <p>Chúng tôi sẵn sàng phục vụ bạn mọi, liên hệ với chúng tôi qua số điện thoại: 0966.858.848 |
+                        0903.522.404 | 0966.233.682 | gặp anh Tuấn .</p>
+                </div>
+                <div class="col-md-3 btn-buy animated fadeInRight">
+                    <a href="tel:0966858848" class="btn-u btn-u-lg"><i class="fa fa-phone"></i> 0966.858.848</a>
+                </div>
+            </div>
+        </div>
+    </div><!--/row-->
+    <!-- End Purchase Block -->
+
+    <!--=== Content Part ===-->
+    <div class="container" style="padding-top: 60px;">
+
+        <!-- Bài viết gần đây -->
+        <div class="headline"><h2>Bài viết gần đây</h2></div>
+        <div class="row margin-bottom-20">
+            {% for item in articles %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                        <div class="thumbnail-img">
+                            <div class="overflow-hidden">
+                                <img class="img-responsive" src="{{ item.image or '/assets/img/main/img1.jpg' }}" alt="">
+                            </div>
+                            <a class="btn-more hover-effect" href="/{{ item.category_id[0].alias }}/{{ item.alias }}">Xem chi tiết +</a>
+                        </div>
+                        <div class="caption">
+                            <h3><a class="hover-effect" href="/{{ item.category_id[0].alias }}/{{ item.alias }}">{{ item.title }}</a></h3>
+                            <p>{{ item.description|safe }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- End Recent Works -->
+
+        <!-- Info Blokcs -->
+        <div class="row margin-bottom-30">
+            <!-- Welcome Block -->
+            <div class="col-md-8 md-margin-bottom-40">
+                <div class="headline"><h2>Đánh giá của khách hàng</h2></div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img class="img-responsive margin-bottom-20 img-customer" src="/images/ong-le-phu-hai.png"
+                             alt="Anh Lê Phú Hải">
+                    </div>
+                    <div class="col-sm-8">
+                        <p>Chúng tôi luôn sát cánh bên bạn mọi lúc, mọi nơi để tìm và đưa gia những giải pháp phù hợp
+                            giúp công trình của bạn và công ty.</p>
+                        <ul class="list-unstyled margin-bottom-20">
+                            <li><i class="fa fa-check color-green"></i> Hơn 100 công ty đã sử dụng dịch vụ</li>
+                            <li><i class="fa fa-check color-green"></i> Hơn 800 hộ gia đình đã liên lạc với chúng tôi
+                            </li>
+                            <li><i class="fa fa-check color-green"></i> Tất cả khách hàng của chúng tôi đều tin tưởng và
+                                sử dụng lại dịch vụ khi có nhu cầu.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <blockquote class="hero-unify">
+                    <p>Tôi rất hài lòng với những gì mà công ty mang lại cho chúng tôi. Không chỉ đảm bảo tiến độ dự án
+                        được hoàn thành đúng thời gian mà chất lượng dịch vụ cũng rất tốt, hơn nữa mức giá cũng rất hợp
+                        lý.</p>
+                    <small>Anh Lê Phú Hải chia sẻ</small>
+                </blockquote>
+            </div><!--/col-md-8-->
+
+            <!-- Latest Shots -->
+            <div class="col-md-4">
+                <div class="headline"><h2>Chúng tôi trên facebook</h2></div>
+                <div class="fb-page" data-href="https://www.facebook.com/ruthamcauuytin" data-small-header="false"
+                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/ruthamcauuytin" class="fb-xfbml-parse-ignore"><a
+                                href="https://www.facebook.com/ruthamcauuytin">Facebook</a></blockquote>
+                </div>
+            </div><!--/col-md-4-->
+        </div>
+        <!-- End Info Blokcs -->
+    </div><!--/container-->
+    <!-- End Content Part -->
+{% endblock %}

@@ -1,0 +1,20 @@
+{
+  "name": "life-parser",
+  "description": "Lifetime of the research reactor",
+  "keywords": [
+    "life-parser",
+    "nodejs",
+    "WebSphere"
+  ],
+  "language": "en_US",
+  "port": "1337",
+  "admin_prefix": "admin",
+  "modules": [
+    "mod_google_analytics",
+    "mod_seo"
+  ],
+  "theme": "bootstrap",
+  "page_size": 10,
+  "admin_email": "lephuhai0511@gmail.com",
+  "version": "v1.1"
+}

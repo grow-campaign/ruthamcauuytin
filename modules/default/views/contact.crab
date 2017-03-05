@@ -1,0 +1,72 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+            background-color: grey;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Liên hệ với chúng tôi</h1>
+        </div>
+    </div>
+
+    <div class="container content" style="padding-bottom: 0">
+        <div class="row margin-bottom-60">
+            <div class="col-md-6 col-sm-6">
+                <!-- Google Map -->
+                <div id="map"></div>
+                <!-- End Google Map -->
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <!-- Get in Touch -->
+                <h3>Qua điện thoại</h3>
+                <p>Liên lạc trực tiếp với chúng tôi qua số điện thoại: <a href="tel:0966858848">0966.858.848 |
+                        0903.522.404 | 0966.233.682 | gặp anh Tuấn</a></p>
+                <hr>
+                <!-- Contacts -->
+                <h3>Văn phòng</h3>
+                <ul class="list-unstyled who">
+                    <li><a href="#"><i class="fa fa-home"></i>616 Cộng Hòa, Phường 13 Quận Tân Bình TP Hồ Chí Minh,
+                            VN</a></li>
+                    <li><a href="tel:0966858848"><i class="fa fa-phone"></i>0966.858.848 | 0903.522.404 | 0966.233.682 |
+                            gặp anh Tuấn</a></li>
+                    <li><a href="http://ruthamcauuytin.net" target="_blank"><i class="fa fa-globe"></i>http://www.ruthamcauuytin.net</a>
+                    </li>
+                </ul>
+                <hr>
+                <!-- Business Hours -->
+                <h3>Giờ làm việc</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Chúng tôi làm việc tất cả các ngày trong tuần, </strong> cả thứ 7 và chủ nhật</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block jsExtends %}
+    <script>
+        function initMap() {
+            var uluru = {lat: 10.804946, lng: 106.6359234};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHCQARjPIxxZ1jj6xhTXpR6azbbcQ5dMc&callback=initMap">
+    </script>
+
+{% endblock %}

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+    <!-- Meta data -->
+    <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/favicon_v1.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ meta.site_description }}">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="{{ meta.app_name }}">
+    <meta name="google-site-verification" content="{{ meta.google-site-verification }}"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="{{ meta.site_title }}">
+    <link rel="canonical" href="http://100dayproject.org"/>
+    <link rel="shortlink" href="http://100dayproject.org/"/>
+    <meta name="geo.region" content="{{ meta.geo_region }}"/>
+    <meta name="RATING" content="GENERAL"/>
+    <meta name="Googlebot" content="index,follow,archive">
+    <meta name="ROBOTS" content="INDEX, FOLLOW"/>
+    <meta name="DISTRIBUTION" content="GLOBAL"/>
+    <meta http-equiv="EXPIRES" content="0"/>
+    <meta name="RESOURCE-TYPE" content="DOCUMENT"/>
+    <meta name="COPYRIGHT" content="{{ meta.copyright }}"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@100dayproject"/>
+    <meta name="twitter:title" content="{{ meta.site_title }}"/>
+    <meta name="twitter:description" content="{{ meta.site_description }}"/>
+    <meta name="twitter:image" content="{{ meta.site_image }}"/>
+
+    <meta property="fb:app_id" content="{{ meta.fb_app_id }}">
+    <meta property="og:site_name" content="{{ meta.app_name }}">
+    <meta property="og:title" content="{{ meta.site_title }}">
+    <meta property="og:description" content="{{ meta.site_description }}">
+    <meta property="og:image" content="{{ meta.site_image }}"/>
+    <meta property="og:image:width" content="200"/>
+    <meta property="og:image:height" content="200"/>
+    <meta property="og:url" content="http://100dayproject.org">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US"/>
+
+    <meta itemprop="name" content="{{ meta.app_name }}">
+    <meta itemprop="description" content="{{ meta.site_description }}">
+    <!-- End meta data -->
+
+    <!-- Web Fonts -->
+    <link rel='stylesheet' type='text/css'
+          href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="/assets/css/headers/header-default.css">
+    <link rel="stylesheet" href="/assets/css/footers/footer-v2.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/assets/plugins/animate.css">
+    <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css">
+    <link rel="stylesheet" href="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/assets/css/theme-colors/default.css" id="style_color">
+    <link rel="stylesheet" href="/assets/css/theme-skins/dark.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    {% block cssExtends %} {% endblock %}
+</head>
+
+<body>
+<div class="wrapper">
+    <!--=== Header ===-->
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <a class="logo" href="/">
+                <img src="/images/duy-bao-logo.png" alt="Logo">
+            </a>
+            <!-- End Logo -->
+
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li><a href="/lien-he">Hỗ trợ</a></li>
+                    <li class="topbar-devider"></li>
+                    <li><a href="/admin/">Đăng nhập</a></li>
+                </ul>
+            </div>
+            <!-- End Topbar -->
+
+            <!-- Toggle get grouped for better mobile display -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
+            <!-- End Toggle -->
+        </div><!--/end container-->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <!-- Home -->
+                    <li class="active">
+                        <a href="/">Trang chủ</a>
+                    </li>
+                    <!-- End Home -->
+                    <li>
+                        <a href="/gioi-thieu">Giới thiệu</a>
+                    </li>
+
+                    <!-- Blog -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Môi trường</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Vẻ đẹp của Hà Nội</a></li>
+                            <li><a href="#">Màu xanh của bầu trời Sài Gòn</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Blog -->
+
+                    <!-- Shortcodes -->
+                    <li class="dropdown mega-menu-fullwidth">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Dịch vụ</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="mega-menu-content disable-icons">
+                                    <div class="container">
+                                        <div class="row equal-height">
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><h3>Rút hầm cầu</h3></li>
+
+                                                    <!-- Typography -->
+                                                    <li><a href="#"><i class="fa fa-sort-alpha-asc"></i> Rút hầm cầu
+                                                            Quận 1</a></li>
+                                                    <li><a href="#"><i class="fa fa-magic"></i> Rút hầm cầu Quận 2</a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-ellipsis-h"></i> Rút hầm cầu Quận 3</a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-quote-left"></i> Rút hầm cầu Quận 4</a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-asterisk"></i> Rút hầm cầu Quận
+                                                            5</a></li>
+                                                    <li><a href="#"><i class="fa fa-comments"></i> Rút hầm cầu Quận
+                                                            6</a></li>
+                                                    <li><a href="#"><i class="fa fa-tasks"></i> Rút hầm cầu Quận 7</a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-align-justify"></i> Rút hầm cầu Quận
+                                                            8</a></li>
+                                                    <!-- End Typography -->
+
+                                                    <!-- Components -->
+                                                    <li><a href="#"><i class="fa fa-comment"></i> Rút hầm cầu Quận 9</a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-tags"></i> Rút hầm cầu Quận 10</a>
+                                                    </li>
+                                                    <li><a href="#"><i class="fa fa-volume-down"></i> Rút hầm cầu Quận
+                                                            11</a></li>
+                                                    <li><a href="#"><i class="fa fa-arrows-h"></i> Rút hầm cầu Quận
+                                                            12</a></li>
+                                                    <!-- End Components -->
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><h3>Thông cống nghẹt</h3></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông cống nghẹt Quận Tân Bình</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông cống nghẹt Quận Bình Thạnh</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><h3>Nạo vét hố ga</h3></li>
+                                                    {% for i in range(0,12) %}
+                                                        <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận {{ loop.index }}</a></li>
+                                                    {% endfor %}
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận Tân Bình</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận Bình Thạnh</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><h3>Thông tắc bể phốt</h3></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông tắc bể phốt Quận Tân Bình</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông tắc bể phốt Quận Bình Thạnh</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End Shortcodes -->
+
+                    <!-- Demo Pages -->
+                    <li class="dropdown mega-menu-fullwidth">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Tin tức</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="mega-menu-content disable-icons">
+                                    <div class="container">
+                                        <div class="row equal-height">
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><a href="#">Accounting</a></li>
+                                                    <li><a href="#">Agency</a></li>
+                                                    <li><a href="#">Architecture</a></li>
+                                                    <li><a href="#">Business</a></li>
+                                                    <li><a href="#">Charity</a></li>
+                                                    <li><a href="#">Consulting</a></li>
+                                                    <li><a href="#">Courses</a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><a href="#">Construction</a></li>
+                                                    <li><a href="#">Gym</a></li>
+                                                    <li><a href="#">Lawyer</a></li>
+                                                    <li><a href="#">Mobile App</a></li>
+                                                    <li><a href="#">Music<small class="color-red">New</small></a></li>
+                                                    <li><a href="#">Real Estate</a></li>
+                                                    <li><a href="#">Restaurant</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><a href="#">Shipping</a></li>
+                                                    <li><a href="#">Spa</a></li>
+                                                    <li><a href="#">Travel</a></li>
+                                                    <li><a href="#">Wealth</a></li>
+                                                    <li><a href="#">Wedding</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3 equal-height-in">
+                                                <ul class="list-unstyled equal-height-list">
+                                                    <li><a href="#">Hero Fashion</a></li>
+                                                    <li><a href="#">Hero Gym</a></li>
+                                                    <li><a href="#">Hero Photography</a></li>
+                                                    <li><a href="#">Hero Restaurant</a></li>
+                                                    <li><a href="#">Hero Web App Dark</a></li>
+                                                    <li><a href="#">Hero Web App Light</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End Demo Pages -->
+
+                    <li>
+                        <a href="/lien-he">Liên hệ</a>
+                    </li>
+                </ul>
+            </div><!--/end container-->
+        </div><!--/navbar-collapse-->
+    </div>
+    <!--=== End Header ===-->
+
+    {% block content %} {% endblock %}
+
+    <div class="container" style="padding-bottom: 60px;">
+        <!-- Owl Clients v1 -->
+        <div class="headline"><h2>Đối tác của chúng tôi</h2></div>
+        <div class="owl-clients-v1">
+            <div class="item">
+                <img src="/assets/img/clients4/1.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/2.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/3.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/4.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/5.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/6.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/7.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/8.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/assets/img/clients4/9.png" alt="">
+            </div>
+        </div>
+        <!-- End Owl Clients v1 -->
+    </div>
+
+    <!--=== Footer Version 2 ===-->
+    <div id="footer-v2" class="footer-v2">
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <!-- About -->
+                    <div class="col-md-3 md-margin-bottom-40">
+                        <a href="/"><img id="logo-footer" class="footer-logo" src="/images/duy-bao-logo.png"></a>
+                        <p class="margin-bottom-20"><strong>CÔNG TY TNHH DUY BẢO</strong> <br> Chuyên cung cấp các giải
+                            pháp, dịch vụ giúp bảo vệ môi trường như rút hầm cầu, thông tắc cống nghẹt,..</p>
+
+                        <form class="footer-subscribe">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nhận tin qua email">
+                                <span class="input-group-btn">
+										<button class="btn-u" type="button">Xác nhận</button>
+									</span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End About -->
+
+                    <!-- Link List -->
+                    <div class="col-md-3 md-margin-bottom-40">
+                        <div class="headline"><h2 class="heading-sm">Liên kết</h2></div>
+                        <ul class="list-unstyled link-list">
+                            <li><a href="/gioi-thieu">Về chúng tôi</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="/lien-he">Liên hệ với chúng tôi</a><i class="fa fa-angle-right"></i></li>
+                            <li><a target="_blank" href="http://100dayproject.org">Nhận thiết kế website</a><i class="fa fa-angle-right"></i></li>
+                        </ul>
+                    </div>
+                    <!-- End Link List -->
+
+                    <!-- Bài viết trên facebook -->
+                    <div class="col-md-3 md-margin-bottom-40">
+                        <div class="latest-tweets">
+                            <div class="headline"><h2 class="heading-sm">Chia sẻ lên facebook</h2></div>
+                            <div class="fb-share-button" data-href="http://ruthamcauuytin.net"
+                                 data-layout="button_count" data-size="large" data-mobile-iframe="true"><a
+                                        class="fb-xfbml-parse-ignore" target="_blank"
+                                        href="https://www.facebook.com/sharer/sharer.php?u=http://ruthamcauuytin.net;src=sdkpreparse">Share</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Latest Tweets -->
+
+                    <!-- Address -->
+                    <div class="col-md-3 md-margin-bottom-40">
+                        <div class="headline"><h2 class="heading-sm">Liên hệ với chúng tôi</h2></div>
+                        <address class="md-margin-bottom-40">
+                            <i class="fa fa-home"></i>616 Cộng Hòa, Phường 13 Quận <br> Tân Bình TP Hồ Chí Minh, VN<br>
+                            <i class="fa fa-phone"></i>Phone: 0966.858.848 | 0903.522.404 | 0966.233.682 | gặp anh Tuấn
+                            <br>
+                            <i class="fa fa-globe"></i>Website: <a href="#">www.ruthamcauuytin.net</a> <br>
+                        </address>
+
+                        <!-- Social Links -->
+                        <ul class="social-icons">
+                            <li><a target="_blank" href="https://facebook.com/ruthamcauuytin"
+                                   data-original-title="Facebook" class="rounded-x social_facebook"></a></li>
+                            <li><a href="http://ruthamcauuytin.net" data-original-title="Goole Plus"
+                                   class="rounded-x social_googleplus"></a></li>
+                        </ul>
+                        <!-- End Social Links -->
+                    </div>
+                    <!-- End Address -->
+                </div>
+            </div>
+        </div><!--/footer-->
+
+        <div class="copyright">
+            <div class="container">
+                <p class="text-center">2017 © All Rights Reserved. Thiết kế và phát triển bởi <a target="_blank"
+                                                                                                 href="http://100dayproject.org">100dayproject.org</a>
+                </p>
+            </div>
+        </div><!--/copyright-->
+    </div>
+    <!--=== End Footer Version 2 ===-->
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script>
+<script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script>
+<script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script>
+<script type="text/javascript" src="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="/assets/js/custom.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="/assets/js/app.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/owl-carousel.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/style-switcher.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/parallax-slider.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        App.init();
+        OwlCarousel.initOwlCarousel();
+        StyleSwitcher.initStyleSwitcher();
+        ParallaxSlider.initParallaxSlider();
+    });
+</script>
+<!--[if lt IE 9]>
+<script src="/assets/plugins/respond.js"></script>
+<script src="/assets/plugins/html5shiv.js"></script>
+<script src="/assets/plugins/placeholder-IE-fixes.js"></script>
+<![endif]-->
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+{% block jsExtends %} {% endblock %}
+</body>
+</html>

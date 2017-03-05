@@ -1,0 +1,38 @@
+{% macro thElement(title,width,type) %}
+    <th width="{{ width }}">
+        {% if type == '_id' %}
+            <input type="checkbox" onclick="checkAll(this)" title="Chọn tất cả">
+        {% else %}
+
+            {% set sort = order_type %}
+
+            {% if order_type == 'desc' %}
+                {% set sort = 'asc' %}
+            {% else %}
+                {% set sort = 'desc' %}
+            {% endif %}
+
+            {% set cond = '' %}
+            {% if cache_search %}
+                {% set cond = '&'+cache_search %}
+            {% endif %}
+
+            <a class="sort-link"
+               href="{{ '/'+ admin_prefix+'/'+module_name+'?page='+currentPage+'&order_by='+type+'&order_type='+sort+cond }}">{{ title }}
+                {% if order_by == type %}
+                    <i style="margin-top: 3px;" class="fa fa-sort-{{ order_type }} pull-right"></i>
+                {% else %}
+                    <i style="margin-top: 3px;" class="fa fa-sort pull-right"></i>
+                {% endif %}
+            </a>
+        {% endif %}
+
+    </th>
+{% endmacro %}
+<tr class="heading">
+    {% for col in tableColumns %}
+        {% if not col.options and col.type != 'hidden' %}
+            {{ thElement(col.header,col.width, col.column) }}
+        {% endif %}
+    {% endfor %}
+</tr>

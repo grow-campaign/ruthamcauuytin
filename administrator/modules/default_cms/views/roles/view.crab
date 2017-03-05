@@ -1,0 +1,125 @@
+{% extends 'layout.crab' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <form id="edit-form" method="post" role="form">
+                <input type="hidden" name="_csrf" value="{{ _csrf }}">
+                {{ toolbar|safe }}
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="form-group group-name">
+                            <label for="name">Tên nhóm quyền<span class="required">*</span></label>
+                            <input title="Tên nhóm quyền" type="text" class="form-control" name="name" value="{{ acl.name }}" autocomplete="off" spellcheck="false"/>
+                            <span class="help-block"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Trạng thái</label>
+                            <select class="table-group-action-input form-control" name="status" required title="status">
+                                <option {% if acl.status == 0 %}selected="selected" {% endif %} value="0">Kích hoạt</option>
+                                <option {% if acl.status == -1 %}selected="selected" {% endif %} value="-1">Bản nháp</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-tabs-custom" style="cursor: move;">
+                    <!-- Tabs within a box -->
+                    <ul class="nav nav-tabs ui-sortable-handle">
+                        <li class="active"><a href="#backend" data-toggle="tab" aria-expanded="false">Backend</a></li>
+                    </ul>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="backend">
+                                    {% for md in modules %}
+                                        <div class="col-md-3 col-sm-3" style="margin-top: 20px;">
+                                            <div class="rule-item">
+                                                <div class="form-group">
+                                                    <label class="label-rule">
+                                                        <input type="checkbox"
+                                                               class="check-rule-parent"/> {{ md.title }}
+                                                    </label>
+
+                                                    {% for role in md.roles %}
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"
+                                                                       {% if role.name|check_permission(acl.values) %}checked
+                                                                       {% endif %}name="{{ role.name }}"
+                                                                       class="check-rule-children"
+                                                                       value="{{ role.name }}"/>
+                                                                {{ role.title }}
+                                                            </label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+    {% block jsExtends %}
+        <script>
+
+            $(document).ready(function(){
+
+                $('input[name="name"]').bind('keyup change', function(e){
+                    if (e.target.value.trim()) {
+                        $('.group-name').removeClass('has-error');
+                        $('.group-name').find('.help-block').text('');
+                    }
+                });
+
+                $('#edit-form').submit(function(){
+                    if ($('input[name="name"]').val().trim()) {
+                        return true;
+                    } else {
+                        $('.group-name').addClass('has-error');
+                        $('.group-name').find('.help-block').text('Vui lòng nhập tên nhóm quyền.');
+                        return false;
+                    }
+                })
+            });
+
+            $(function () {
+                var checkParent = $('input.check-rule-parent');
+                // Check parent if all children is checked
+                checkParent.each(function () {
+                    var isCheckAll = true;
+                    var cbChild = $(this).parent('label').parent('div')
+                            .children('div').children('label').children('input[type="checkbox"]');
+                    cbChild.each(function () {
+                        if (!$(this).is(':checked')) {
+                            isCheckAll = false;
+                        }
+                    });
+                    if (isCheckAll) {
+                        $(this).prop('checked', true);
+                    }
+                });
+                // Check rule event
+                checkParent.change(function () {
+                    var cbChild = $(this).parent('label').parent('div')
+                            .children('div').children('label').children('input[type="checkbox"]');
+                    if ($(this).is(':checked')) {
+                        cbChild.prop('checked', true);
+                    } else {
+                        cbChild.prop('checked', false);
+                    }
+                });
+            })
+        </script>
+    {% endblock %}

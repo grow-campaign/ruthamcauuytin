@@ -1,0 +1,78 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    <style>
+        .magazine-news .by-author {
+            margin-bottom: 8px;
+        }
+
+        .magazine-news .by-author span {
+            color: #777;
+        }
+
+        .magazine-page p img {
+            margin-top: 5px;
+            height: auto !important;
+            max-width: 100% !important;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container content">
+        <div class="row magazine-page">
+            <div class="col-md-9">
+                <div class="magazine-news news-v3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>{{ post.title }}</h1>
+                            <div class="by-author">
+                                <strong><a href="/danh-muc/{{ category_alias }}">{{ post.category_id[0].name }}</a></strong>
+                                <span>/ {{ post.created_at|moment }}</span>
+                                <span>/ 1.217 lượt xem</span>
+                                <span>/ </span>
+                                <div class="fb-like" data-href="/{{ post.category_alias }}/{{ post.alias }}"
+                                     data-layout="standard"
+                                     data-action="like" data-size="small" data-show-faces="true"
+                                     data-share="true"></div>
+                            </div>
+                            <div>{{ post.content|safe }}</div>
+                        </div>
+                    </div>
+                    <div class="fb-share-button" data-href="/{{ post.category_alias }}/{{ post.alias }}"
+                         data-layout="button_count" data-size="small" data-mobile-iframe="true"><a
+                                class="fb-xfbml-parse-ignore" target="_blank"
+                                href="https://www.facebook.com/sharer/sharer.php?u=/{{ post.category_alias }}/{{ post.alias }}">Chia sẻ</a>
+                    </div>&nbsp; ← Chia sẻ với bạn bè qua Facebook!
+                </div>
+                <div class="margin-bottom-35">
+                    <hr class="hr-md">
+                </div>
+                <div class="fb-comments" data-href="http://ruthamcauuytin.net" data-width="100%"
+                     data-numposts="5"></div>
+            </div>
+            <div class="col-md-3">
+                <div class="fb-page" data-href="https://www.facebook.com/ruthamcauuytin" data-small-header="false"
+                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/ruthamcauuytin" class="fb-xfbml-parse-ignore"><a
+                                href="https://www.facebook.com/ruthamcauuytin">Facebook</a></blockquote>
+                </div>
+                <div class="headline-v2 bg-color-light" style="margin-top: 25px"><h2>Tin cùng chuyên mục</h2></div>
+                <!-- Latest Links -->
+                <ul class="list-unstyled blog-latest-posts margin-bottom-50">
+                    {% for post in posts %}
+                        <li>
+                            <a title="{{ post.title }}"
+                               href="/{{ category_alias }}/{{ post.alias }}">
+                                <img style="max-width: 100%" src="{{ post.image }}" alt="{{ post.title }}">
+                            </a>
+                            <h3><a href="/{{ category_alias }}/{{ post.alias }}">{{ post.title }}</a></h3>
+                            <small>{{ post.created_at|moment }}</small>
+                            <p>{{ post.description|safe }}<a href="/{{ category_alias }}/{{ post.alias }}">Xem chi tiết</a></p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+.idea
+node_modules/
+/logs/exceptions.log
+/logs/webInstall.log
+.DS_Store
+dbBackup/.DS_Store
+dbBackup/dump/.DS_Store
+bower_components/
+public/images/Thumbs.db
+public/images/filetypes/Thumbs.db
+public/images/filetypes/big/Thumbs.db
+public/images/icons/Thumbs.db
+public/images/themes/Thumbs.db
+public/media/shot_1479036500044.png
+public/plugins/fancyBox-2.1.5/
+public/uploads/images/ScHwq6mbKpXc_1479036320941.png
+yarn.lock

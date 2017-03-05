@@ -1,0 +1,65 @@
+{% extends 'layout.crab' %}
+
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">{{ posts[0].category_id[0].name }}</h1>
+        </div>
+    </div>
+
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="headline"><h2>Bài viết</h2></div>
+                {% for post in posts %}
+                    <div class="row clients-page">
+                        <div class="col-md-2">
+                            <img src="{{ post.image }}" class="img-responsive hover-effect" alt="">
+                        </div>
+                        <div class="col-md-10">
+                            <a href="/{{ post.category_id[0].alias }}/{{ post.alias }}"><h3>{{ post.title }}</h3></a>
+                            <ul class="list-inline">
+                                <li><i class="fa fa-calendar-check-o color-green"></i> {{ post.created_at|dateFormat }}</li>
+                            </ul>
+                            <div>{{ post.description|safe }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <!-- Pagination -->
+                {#<div class="text-center md-margin-bottom-30">#}
+                    {#<ul class="pagination">#}
+                        {#<li><a href="#">«</a></li>#}
+                        {#<li><a href="#">1</a></li>#}
+                        {#<li><a href="#">2</a></li>#}
+                        {#<li class="active"><a href="#">3</a></li>#}
+                        {#<li><a href="#">4</a></li>#}
+                        {#<li><a href="#">5</a></li>#}
+                        {#<li><a href="#">»</a></li>#}
+                    {#</ul>#}
+                {#</div>#}
+                <!-- End Pagination -->
+            </div><!--/col-md-9-->
+
+            <div class="col-md-3">
+                <!-- About Us -->
+                <div class="headline"><h2>Về chúng tôi</h2></div>
+                <div class="margin-bottom-30">
+                    <p>Rút hầm cầu Duy Bảo - tại Tp Hồ Chí Minh (Sài Gòn)</p>
+                    <p>Cung cấp các giải pháp, dịch vụ giúp môi trường xanh sạch đẹp <br>
+                        <a class="linked color-green" href="/gioi-thieu"> Xem chi tiết</a></p>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="who margin-bottom-30">
+                    <div class="headline"><h2>Liên hệ</h2></div>
+                    <p>616 Cộng Hòa, Phường 13 Quận Tân Bình TP Hồ Chí Minh, VN</p>
+                    <ul class="list-unstyled">
+                        <li><a href="tel:0966858848"><i class="fa fa-phone"></i>Phone: 0966.858.848 | 0903.522.404 | 0966.233.682 | gặp anh Tuấn </a></li>
+                        <li><a href="http://ruthamcauuytin.net"><i class="fa fa-globe"></i>http://www.ruthamcauuytin.net</a></li>
+                    </ul>
+                </div>
+            </div><!--/col-md-3-->
+        </div><!--/row-->
+    </div>
+{% endblock %}

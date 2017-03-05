@@ -1,0 +1,42 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    {{ super() }}
+{% endblock %}
+
+{% block content_body %}
+    {% for log in logs %}
+        <tr>
+            <td><input type="checkbox" class="check-element" name="ids[]" value="{{ log._id }}"></td>
+            <td>{{ log.level }}</td>
+            <td>{{ log.category }}</td>
+            <td>{{ log.message }}</td>
+            <td><span class="label label-primary">{{ log.user_id.display_name }}</span></td>
+            <td>{{ log.created_at|dateFormat }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block jsExtends %}
+    {{ super() }}
+    <script>
+        function deleteRecords() {
+            var ids = [];
+            $("input:checkbox[name='ids[]']:checked").each(function () {
+                ids.push($(this).val());
+            });
+            if (ids.length > 0) {
+                $.ajax({
+                    url: `/{{ admin_prefix }}/logs`,
+                    type: 'DELETE',
+                    data: {
+                        ids: ids
+                    },
+                    success: function (result) {
+                        window.location.href = `/{{ admin_prefix }}/logs`;
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

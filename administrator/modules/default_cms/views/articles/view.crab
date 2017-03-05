@@ -1,0 +1,204 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    <link rel="stylesheet" href="/libs_custom/select2.css">
+    <link rel="stylesheet" href="/css/modal_image.css">
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <input type="hidden" name="_csrf" value="{{ _csrf }}">
+        {{ toolbar|safe }}
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9">
+                        <div class="form-group">
+                            <label for="title">Tiêu đề <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="title" id="title" value="{{ post.title }}"
+                                   autocomplete="off" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Nội dung <span class="required">*</span></label>
+                            <textarea name="content" id="content" required>{{ post.content }}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Mô tả</label>
+                            <textarea name="description" id="description" class="form-control" rows="5"
+                                      style="visibility: hidden; display: none;">{{ post.description }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3">
+                        <div class="form-group">
+                            <label for="status">Trạng thái</label>
+                            <select name="status" id="status" class="form-control">
+                                <option {% if post.status == 0 %} selected="selected" {% endif %} value="0">Phát hành
+                                </option>
+
+                                <option {% if post.status == -1 %} selected="selected" {% endif %} value="-1">Bản nháp
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tags">Tags</label>
+                            <select multiple="multiple" name="tags" id="tags"
+                                    class="form-control">
+                                {% for tag in post.tags %}
+                                    <option selected value="{{ tag }}">{{ tag }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_id">Danh mục</label>
+                            <select multiple="multiple" name="category_id" id="category_id"
+                                    class="form-control">
+                               {% if create %}
+                                   {% for category in categories %}
+                                       <option value="{{ category._id }}">{{ category.name }}</option>
+                                   {% endfor %}
+                                   {% else %}
+                                       {{ categories|filter_select2(post.category_id, '_id', 'name') }}
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            {% if post.image|content_type == 'youtube' %}
+                                <label class="control-label">Video đại diện</label>
+                                <div class="video-container player-condensed">
+                                    <iframe width="100%" height="auto"
+                                            src="{{ post.image }}?showinfo=0"
+                                            frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            {% else %}
+                                <label class="control-label">Hình đại diện</label>
+                                {% if post.image %}
+                                    <img onclick="openModalMedia()" style="cursor: pointer" id="previewImage" class="img-thumbnail" src="{{ post.image }}">
+                                {% else %}
+                                    <img id="previewImage" style="cursor: pointer;" onclick="openModalMedia()"
+                                         width="80%"
+                                         class="img-thumbnail" src="/images/no_image_available.jpeg"
+                                         alt="Image preview">
+                                {% endif %}
+                                <input id="input_previewImage" type="hidden" name="image">
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alias">Alias</label>
+                            <input type="text" class="form-control" name="alias" id="alias" value="{{ post.alias }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu</label>
+                            <input type="text" class="form-control" value="{{ post.password }}" name="password"
+                                   id="password"
+                                   autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal-->
+
+        <div id="mediaModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Tải lên/Chọn media</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-8 media-content"></div>
+                        <div class="col-md-4 media-info">
+                            <dl class="dl-horizontals">
+                                <dt style="padding-bottom: 12px">
+                                    <img id="previewMedia" class="img-thumbnail" style="max-width: 30%"
+                                         src="/images/no_image_available.jpeg">
+                                </dt>
+                                <dd>File name:
+                                    <div style="display: inline;" id="name_media"></div>
+                                </dd>
+                                <dd>Size:
+                                    <div style="display: inline;" id="size_media"></div>
+                                </dd>
+                                <br>
+                                <dt style="display: inline">Ngày tạo:</dt>
+                                <dd style="display: inline" id="createdAt_media"></dd>
+                                <br>
+                                <br>
+                                <dd>
+                                    <div onclick="select_media()" class="btn btn-primary">Chọn hình ảnh</div>
+                                    <div onclick="remove_media()" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa hình ảnh</div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="btn btn-primary btn-file" style="position: fixed; left: 30px">
+                                    <i class="fa fa-upload" aria-hidden="true"></i> Tải lên tệp tin
+                                    <input type="file" name="uploads[]" multiple="multiple" id="upload-input">
+                                </div>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block jsExtends %}
+    <script src="/plugins/ckeditor/ckeditor.js"></script>
+    <script src="/bower_components/AdminLTE/plugins/select2/select2.min.js"></script>
+    <script src="/js/hai100dayproject.js"></script>
+    <script>
+        (function () {
+            /* BEGIN init ckeditor */
+            CKEDITOR.replace('content', {
+                height: 300
+            });
+
+            CKEDITOR.replace('description', {
+                height: 100,
+                toolbar: [
+                    {name: 'basicstyles', items: ['Bold', 'Italic', 'Underline']},
+                    {name: 'colors', items: ['TextColor', 'BGColor']}
+                ]
+            });
+
+
+            var $tags = $('#tags');
+            var $categories = $('#category_id');
+
+            /* BEGIN init select2 */
+            $tags.select2({
+                placeholder: "Nhập tags",
+                tags: true,
+                templateSelection: function (option) {
+                    var text = $(option.element).text().trim();
+                    text = text.replace(/^[—]+/, '');
+                    return text;
+                }
+            });
+
+            $categories.select2({
+                placeholder: "Chọn danh mục",
+                templateSelection: function (option) {
+                    var text = $(option.element).text().trim();
+                    text = text.replace(/^[—]+/, '');
+                    return text;
+                }
+            });
+        })();
+    </script>
+{% endblock %}

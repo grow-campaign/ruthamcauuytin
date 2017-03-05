@@ -1,0 +1,112 @@
+{% extends 'layout.crab' %}
+
+{% block content_body %}
+    <div class="container ">
+        <p>
+        <h1>Welcome to the CrabJS Installer</h1>
+        You are just a few steps away from launching your own CrabJS content management!
+        </p>
+        <form id="install" action="/" method="post">
+            <div class="admin">
+                <p>
+                <h1>
+                    <small>Create an Administrator account</small>
+                </h1>
+                <hr/>
+                </p>
+
+                <div class="row input-row">
+                    <div class="col-sm-7 col-xs-12 input-field">
+                        <label for="admin:username">Username</label>
+                        <input type="text" class="form-control" name="admin:username" value="" placeholder="Username"/>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col-sm-7 col-xs-12 input-field">
+                        <label for="admin:email">Email Address</label>
+                        <input type="text" class="form-control" name="admin:email" value="" placeholder="Email Address"/>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col-sm-7 col-xs-12 input-field">
+                        <label for="admin:password">Password</label>
+                        <input type="password" class="form-control" name="admin:password" value="" placeholder="Password"/>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col-sm-7 col-xs-12 input-field">
+                        <label for="admin:passwordConfirm">Confirm Password</label>
+                    </div>
+                    <div class="col-sm-5 help-text" data-help="Please confirm your password."></div>
+                </div>
+            </div>
+
+
+            <div class="database">
+                <p>
+                <h1>
+                    <small>Configure your database</small>
+                </h1>
+                <hr/>
+                </p>
+
+                <div class="row input-row">
+                    <div class="col-sm-7 col-xs-12 input-field">
+                        <label for="database">Database Type</label>
+                        <select class="form-control" name="database">
+                            <option value="redis">Redis</option>
+                            <option value="mongo">MongoDB</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div data-database="mongo">
+                    <div class="row input-row">
+                        <div class="col-sm-7 col-xs-12 input-field">
+                            <label for="mongo:host">Host IP or address of your MongoDB instance</label>
+                            <input type="text" class="form-control" name="mongo:host" placeholder="127.0.0.1"
+                                   value="127.0.0.1"/>
+                        </div>
+                    </div>
+                    <div class="row input-row">
+                        <div class="col-sm-7 col-xs-12 input-field">
+                            <label for="mongo:port">Host port of your MongoDB instance</label>
+                            <input type="text" class="form-control" name="mongo:port" placeholder="27017" value="27017"/>
+                        </div>
+                    </div>
+                    <div class="row input-row">
+                        <div class="col-sm-7 col-xs-12 input-field">
+                            <label for="mongo:username">MongoDB username</label>
+                            <input type="text" class="form-control" name="mongo:username" placeholder="" value=""/>
+                        </div>
+                    </div>
+                    <div class="row input-row">
+                        <div class="col-sm-7 col-xs-12 input-field">
+                            <label for="mongo:password">Password of your MongoDB database</label>
+                            <input type="text" class="form-control" name="mongo:password" placeholder="" value=""/>
+                        </div>
+                    </div>
+                    <div class="row input-row">
+                        <div class="col-sm-7 col-xs-12 input-field">
+                            <label for="mongo:database">Which database to use</label>
+                            <input type="text" class="form-control" name="mongo:database" placeholder="0" value="0"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row input-row">
+                <div class="col-md-2 col-xs-9 input-field">
+                    <button id="submit" type="button" class="btn btn-lg btn-success">Install CrabJS <i
+                                class="fa fa-spinner fa-spin hide"></i></button>
+                </div>
+                <div class="input-field">
+                    <button id="submit" type="button" class="btn btn-lg btn-success">Test connection <i
+                                class="fa fa-spinner fa-spin hide"></i></button>
+                    <div class="col-sm-5 help-text" data-help="Leave the fields blank to use the default settings."></div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1">
+    <title>{{ title }}</title>
+    <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/favicon_v1.png">
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/bower_components/AdminLTE/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+    page. However, you can choose any other skin. Make sure you
+    apply the skin class to the body tag so the changes take effect.-->
+    <link rel="stylesheet" href="/bower_components/AdminLTE/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/bower_components/hint.css/hint.min.css">
+    <link rel="stylesheet" href="/bower_components/snackbarjs/dist/snackbar.min.css">
+    <link rel="stylesheet" href="/bower_components/snackbarjs/themes-css/material.css">
+    <link rel="stylesheet" href="/css/custom_backend.css">
+    <style>
+        .required {
+            color: #c62828 !important;
+        }
+
+        .is_read {
+            background-color: #f4f4f4;
+        }
+     </style>
+    {% block cssExtends %}
+        <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker-bs3.css">
+    {% endblock %}
+</head>
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    {% include themeName + '/_header.crab' %}
+
+    <!-- Left side column. contains the logo and sidebar -->
+    {% include themeName + '/_menu.crab' %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        {#<section class="content-header">#}
+            {#<h1>Crab.JS</h1>#}
+        {#</section>#}
+
+        <!-- Main content -->
+        <section class="content">
+            {% include themeName + '/custom_flash.crab' %}
+            <div class="row">
+                <div class="col-md-12">
+                    {% block content %}
+                        {{ toolbar|safe }}
+                        {% block toolbarExtends %}{% endblock %}
+                        <div class="box box-solid box-primary">
+                            <div class="box-body table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="datatable_orders">
+                                    <thead>
+                                    {% include themeName +'/basic_table/header.crab' %}
+                                    {% include themeName + '/basic_table/filter.crab' %}
+                                    </thead>
+                                    <tbody>
+                                    <input type="hidden" name="_csrf" value="{{ _csrf }}">
+                                    {% block content_body %}{% endblock %}
+                                    </tbody>
+                                </table>
+                                {% set cond = '' %}
+                                {% if cache_search %}
+                                    {% set cond = '&'+cache_search %}
+                                {% endif %}
+                                {% if totalPage %}
+                                    {{ totalPage|pagination(currentPage,'/admin/'+module_name+'?page={page}&order_by='+order_by+'&order_type='+order_type +cond)|safe }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2016 <a target="_blank" href="https://vietworm.github.io/Crab.JS/">{{ app_name }}</a>.</strong>
+        All rights reserved.
+
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            <span style="font-size: 12px">Last account activity: {{ user.last_login_date|moment('en') }}. </span>
+            <span style="font-size: 12px; text-decoration: underline; cursor: pointer;">Details</span>
+        </div>
+    </footer>
+</div>
+<!-- ./wrapper -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script type="application/javascript" src="/bower_components/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/bower_components/AdminLTE/dist/js/app.min.js"></script>
+<script src="/bower_components/snackbarjs/dist/snackbar.min.js"></script>
+
+<script>
+    $.ajaxSetup({
+        headers: {'X-CSRF-Token': '{{ _csrf }}'}
+    });
+</script>
+<!-- REQUIRED JS SCRIPTS -->
+{% block jsExtends %}
+    <script src="/bower_components/AdminLTE/plugins/daterangepicker/moment.min.js"></script>
+    <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+    <script>
+        $('input[type="date-range"]').daterangepicker({
+            "showISOWeekNumbers": true,
+            "locale": {
+                "format": "MM/DD/YYYY",
+                "separator": " - ",
+                "applyLabel": "Xác nhận",
+                "cancelLabel": "Hủy bỏ",
+                "fromLabel": "Từ ngày",
+                "toLabel": "Đến ngày",
+                "customRangeLabel": "Tùy chỉnh",
+                "daysOfWeek": [
+                    "CN",
+                    "T2",
+                    "T3",
+                    "T4",
+                    "T5",
+                    "T6",
+                    "T7"
+                ],
+                "firstDay": 1
+            },
+            "linkedCalendars": false,
+            "opens": "left"
+        }, function (start, end, label) {
+            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+        });
+
+        function checkAll(selectAll) {
+            var input = document.getElementsByTagName('input');
+            for (var i = 0; i < input.length; i++) {
+                if (input[i].type == 'checkbox') {
+                    input[i].checked = selectAll.checked;
+                }
+            }
+        }
+    </script>
+{% endblock %}
+<script>
+    $(function () {
+        var url = "{{ url }}";
+
+        var $menu_active = $('.sidebar').find('ul li ul a[href="{{ url }}"]');
+
+        if ($menu_active.length) {
+            $menu_active.css("color", "#fff");
+            $menu_active.parent().parent().addClass('menu-open');
+            $menu_active.parent().parent().parent().addClass('active');
+        } else {
+            var newUrl = url.split('/').slice(0, 3).join('/');
+            if (newUrl.indexOf('?') >= 0) {
+                newUrl = newUrl.split('?')[0];
+            }
+            var x = `a[href="${newUrl}"]`;
+            $menu_active = $('.sidebar').find('ul').find('li').find('ul').find(x);
+            $menu_active.parent().parent().parent().addClass('active');
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Select modal</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="/libs/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/libs/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/libs/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/libs/AdminLTE.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+    page. However, you can choose any other skin. Make sure you
+    apply the skin class to the body tag so the changes take effect.-->
+    <link rel="stylesheet" href="/libs/skins/_all-skins.min.css">
+
+    <link rel="stylesheet" href="/libs/custom.css">
+
+    {% block cssExtends %}
+        <link rel="stylesheet" href="/libs/plugins/daterangepicker/daterangepicker-bs3.css">
+    {% endblock %}
+</head>
+
+<body>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            {% block content %}
+                {{ toolbar|safe }}
+                <div class="box box-solid box-primary">
+                    <div class="box-body table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="datatable_orders">
+                            <thead>
+                            {% include themeName +'/basic_table/header.html' %}
+                            {% include themeName + '/basic_table/filter.html' %}
+                            </thead>
+                            <tbody>
+                            {% block content_body %}{% endblock %}
+                            </tbody>
+                        </table>
+                        {% if totalPage %}
+                            {{ totalPage|pagination(currentPage, currentURI) }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+<!-- ./wrapper -->
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/bootstrap.min.js"></script>
+<script src="/libs/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script type="application/javascript" src="/libs/plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/libs/app.js"></script>
+
+<!-- REQUIRED JS SCRIPTS -->
+{% block jsExtends %}
+    <script src="/libs/plugins/daterangepicker/moment.min.js"></script>
+    <script src="/libs/plugins/daterangepicker/daterangepicker.js"></script>
+    <script>
+        $('input[type="date-range"]').daterangepicker({format: 'YYYY-MM-DD'});
+    </script>
+{% endblock %}
+<script>
+    function checkAll(selectAll) {
+        var input = document.getElementsByTagName('input');
+        for (var i = 0; i < input.length; i++) {
+            if (input[i].type == 'checkbox') {
+                input[i].checked = selectAll.checked;
+            }
+        }
+    }
+</script>
+</body>
+</html>

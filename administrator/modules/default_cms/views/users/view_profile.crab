@@ -1,0 +1,509 @@
+{% extends 'layout.crab' %}
+
+{% block cssExtends %}
+    <style>
+
+        .overlay {
+            margin: auto;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .alert {
+            -webkit-transition: all 0.35s;
+            transition: all 0.35s;
+        }
+
+        @media (min-width: 992px) {
+            .modal-lg {
+                width: 1208px;
+            }
+        }
+
+        .media-content img:hover {
+            outline: 2px solid #6A1B9A;
+        }
+
+        #mediaModal ::-webkit-scrollbar {
+            width: 5px;
+            height: 10px;
+        }
+
+        /* Handle */
+        #mediaModal ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: #90949c;
+            width: 5px;
+        }
+
+        #mediaModal ::-webkit-scrollbar-thumb:window-inactive {
+            background: #90949c;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        .choose_avatar {
+            margin: 15px 0;
+            max-width: 128px;
+            max-height: 128px;
+            cursor: pointer;
+        }
+        input[name="avatar_user"] {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <form id="frm_create" method="post" action="/{{ admin_prefix }}/users/view/{{ profile._id }}?_csrf={{ _csrf }}" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="{{ _csrf }}">
+        <input type="file" hidden name="avatar_user">
+        <div class="box box-solid box-primary">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-1 col-sm-3 col-xs-3">
+                        <button onclick="window.history.back()" class="btn btn-default"
+                                style="margin-bottom: 15px"><i class="fa fa-angle-left"></i> Quay lại
+                        </button>
+                    </div>
+                    <div class="col-md-1 col-sm-3 col-xs-3">
+                        <button type="submit" class="btn btn-success" style="margin-bottom: 15px">Cập nhật</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- TAB NAVIGATION -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#tab1" role="tab" data-toggle="tab" aria-expanded="true">Thông
+                                    tin cá nhân</a></li>
+                            <li class=""><a href="#tab2" role="tab" data-toggle="tab" aria-expanded="false">Gửi thông
+                                    báo</a></li>
+                            <li class=""><a href="#tab3" role="tab" data-toggle="tab" aria-expanded="false">Hoạt động
+                                    tài khoản</a></li>
+                        </ul>
+                        <!-- TAB CONTENT -->
+                        <div class="tab-content" style="padding-top: 15px;">
+                            <div class="tab-pane fade active in" id="tab1">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email">Email <span class="required">*</span></label>
+                                            <input required type="email" class="form-control" id="email" name="email"
+                                                   value="{{ profile.email }}" autocomplete="off">
+                                        </div>
+
+                                        <div class="form-group" style="position: relative;">
+                                            <label for="password">Mật khẩu {% if create %}<span
+                                                        class="required">*</span>{% endif %}</label>
+                                            <input
+                                                    {% if user._id|toString() == profile._id|toString() %}
+                                                        disabled
+                                                    {% else %}
+                                                        name="password"
+                                                    {% endif %} {% if create %}required{% endif %} id="password"
+                                                                                                   type="password"
+                                                                                                   class="form-control">
+                                            {% if user.email == profile.email %}
+                                                <a class="btn btn-sm btn-primary" data-toggle="modal" href="#confirm"
+                                                   style="position: absolute;top: 27px;right: 2px;">
+                                                    <i class="fa fa-lock"></i> Đổi mật khẩu</a>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="display_name">Tên hiển thị <span
+                                                        class="required">*</span></label>
+                                            <input id="display_name" type="text" class="form-control"
+                                                   name="display_name" value="{{ profile.display_name }}" required="">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="status">Trạng thái</label>
+                                            <select class="form-control" name="status" id="status">
+                                                <option {% if profile.status == 'Available' %}selected="selected" {% endif %}
+                                                        value="Available">Kích hoạt
+                                                </option>
+                                                <option {% if profile.status == 'Pending' %}selected="selected" {% endif %}
+                                                        value="Pending">Chờ kích hoạt
+                                                </option>
+                                                <option {% if profile.status == 'Block' %}selected="selected" {% endif %}
+                                                        value="Block">Khóa
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="last_login_date">Hoạt động gần đây</label>
+                                            <input type="text" id="last_login_date" name="last_login_date"
+                                                   value="{{ profile.last_login_date|moment }}"
+                                                   class="form-control require-input" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <button onclick="openDeleteConfirmModal()" type="button"
+                                                    class="btn btn-danger"><i class="fa fa-trash"></i> Xóa bộ nhớ
+                                                tạm
+                                            </button>
+                                            {% if profile.status == 'Pending' %}
+                                                <button onclick="reSendUserActivation()" type="button"
+                                                        class="btn btn-warning pull-right"><i
+                                                            class="fa fa-paper-plane"></i> Gửi email xác minh
+                                                </button>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="confirm-delete-cache-modal" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true"></button>
+                                                    <h4 class="modal-title"></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Dữ liệu tạm của bạn sẽ được cập nhật lại khi thực hiện hành
+                                                        động này.</p>
+                                                    <strong>Bạn chắc chắn muốn xóa thông tin này ?</strong>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn default" data-dismiss="modal">
+                                                        Hủy
+                                                        bỏ
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger"
+                                                            onclick="deleteCache()">Xác nhận
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="type">Loại tài khoản</label>
+                                            <div class="input-group">
+                                                <select onchange="change_user_type(this);" class="form-control" name="type"
+                                                        id="type">
+                                                    <option {% if profile.type == -1 %} selected {% endif %} value="-1">
+                                                        Người dùng
+                                                    </option>
+                                                    <option ignore="7" {% if profile.type == 0 %} selected {% endif %}
+                                                            value="0">
+                                                        Quản trị
+                                                    </option>
+                                                </select>
+                                                <span class="input-group-addon" style="border-color: #fff; cursor: pointer">
+                                                    <span style="font-size: 18px" class="label label-primary">+</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group group_permission"
+                                             style="display: {% if profile.type == 0 %} inherit {% else %} none {% endif %};">
+                                            <label for="role_id">Chọn nhóm quyền hạn</label>
+                                            <select class="form-control" name="role_id" id="role_id">
+                                                {% for role in roles %}
+                                                    {% if profile.role_id|toString() == role._id|toString() %}
+                                                        <option ignore="7" selected
+                                                                value={{ role._id }}>{{ role.name }}</option>
+                                                    {% else %}
+                                                        <option value={{ role._id }}>{{ role.name }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Ảnh đại diện<span class="help-block" style="display: inline;">(128x128px)</span></label>
+                                            <br>
+                                            <img class="choose_avatar img img-thumbnail"
+                                                 src="{{ profile.avatar or '/images/no_avatar.gif' }}">
+                                            <input value="{{ profile.avatar }}" type="hidden" id="input_previewImage"
+                                                   name="avatar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab2">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Gửi email tới người dùng</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- The timeline -->
+                                        <ul class="timeline timeline-inverse">
+                                            <!-- timeline time label -->
+                                            <li class="time-label">
+                        <span class="bg-red">
+                          10 Feb. 2014
+                        </span>
+                                            </li>
+                                            <!-- /.timeline-label -->
+                                            <!-- timeline item -->
+                                            <li>
+                                                <i class="fa fa-envelope bg-blue"></i>
+
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                    <h3 class="timeline-header"><a href="#">Support Team</a> sent you an
+                                                        email</h3>
+
+                                                    <div class="timeline-body">
+                                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo
+                                                        kaboodle
+                                                        quora plaxo ideeli hulu weebly balihoo...
+                                                    </div>
+                                                    <div class="timeline-footer">
+                                                        <a class="btn btn-primary btn-xs">Read more</a>
+                                                        <a class="btn btn-danger btn-xs">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- END timeline item -->
+                                            <!-- timeline item -->
+                                            <li>
+                                                <i class="fa fa-user bg-aqua"></i>
+
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+
+                                                    <h3 class="timeline-header no-border"><a href="#">Sarah Young</a>
+                                                        accepted your friend request
+                                                    </h3>
+                                                </div>
+                                            </li>
+                                            <!-- END timeline item -->
+                                            <!-- timeline item -->
+                                            <li>
+                                                <i class="fa fa-comments bg-yellow"></i>
+
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+
+                                                    <h3 class="timeline-header"><a href="#">Jay White</a> commented on
+                                                        your post</h3>
+
+                                                    <div class="timeline-body">
+                                                        Take me to your leader!
+                                                        Switzerland is small and neutral!
+                                                        We are more like Germany, ambitious and misunderstood!
+                                                    </div>
+                                                    <div class="timeline-footer">
+                                                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- END timeline item -->
+                                            <!-- timeline time label -->
+                                            <li class="time-label">
+                        <span class="bg-green">
+                          3 Jan. 2014
+                        </span>
+                                            </li>
+                                            <!-- /.timeline-label -->
+                                            <!-- timeline item -->
+                                            <li>
+                                                <i class="fa fa-camera bg-purple"></i>
+
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+
+                                                    <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new
+                                                        photos</h3>
+
+                                                    <div class="timeline-body">
+                                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- END timeline item -->
+                                            <li>
+                                                <i class="fa fa-clock-o bg-gray"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="modal fade" id="confirm" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 600px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thay đổi mật khẩu: </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="checkPassword-msg"></div>
+                    <div class="form-group">
+                        <label class="control-label">Mật khẩu cũ</label>
+                        <input title="old Password" type="password" class="form-control" name="old_pass"
+                               id="old_pass">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Mật khẩu mới</label>
+                        <input title="new password" type="password" class="form-control" id="new_pass"
+                               name="new_pass">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nhập lại mật khẩu</label>
+                        <input required title="confirm password" type="password" class="form-control" id="confirm_pass"
+                               name="confirm_pass">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button id="checkPassword" type="button" class="btn btn-primary">Thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block jsExtends %}
+    <script src="/js/hai100dayproject.js"></script>
+
+    <script>
+
+        $('.choose_avatar').click(function () {
+            $('input[name="avatar_user"]').click();
+        });
+
+        $('input[name="avatar_user"]').on('change', function (input) {
+            if (input.target.files && input.target.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.choose_avatar').attr('src', e.target.result)
+                            .width(150)
+                            .height(150);
+                };
+
+                reader.readAsDataURL(input.target.files[0]);
+            }
+        });
+
+        var display_name = $('#display_name').val();
+        $('#confirm-delete-cache-modal').find('h4.modal-title').html(`Xác nhận xóa dữ liệu tạm trên tài khoản <span style="color: #3c8dbc;">${display_name}</span>`);
+
+        $(document).keypress(function (e) {
+            if (e.which === 13) {
+                $('form#frm_create').submit();
+                return false;
+            }
+        });
+
+        function change_user_type(sel) {
+            if ($("#type").find("option:selected").attr('ignore') == 7) {
+                $('.group_permission').css('display', 'inherit');
+                $('.group_permission select').attr('name', 'role_id');
+            } else {
+                $('.group_permission').css('display', 'none');
+                $('.group_permission select').removeAttr('name')
+            }
+        }
+    </script>
+
+    <script>
+
+        function reSendUserActivation() {
+
+        }
+
+        function openDeleteConfirmModal() {
+            $('#confirm-delete-cache-modal').modal('show');
+        }
+
+        function deleteCache() {
+            $.ajax({
+                url: `/{{ admin_prefix }}/users/view/{{ profile._id }}`,
+                type: 'DELETE',
+                success: function (result) {
+                    window.location.href = `/{{ admin_prefix }}/users/view/{{ profile._id }}`;
+                }
+            });
+        }
+    </script>
+
+    {% if user._id|toString() == profile._id|toString() %}
+        <script>
+            function showLoading(element) {
+                if (!element) {
+                    element = "body";
+                }
+                $(element).append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+            }
+
+            function hideLoading() {
+                $(".overlay").remove();
+            }
+
+            $("#checkPassword").click(function () {
+                var $old_pass = $("#old_pass").val(),
+                        $new_pass = $("#new_pass").val(),
+                        $confirm_pass = $("#confirm_pass").val();
+
+                var user_id = '{{ profile._id }}';
+                showLoading('#checkPassword-msg');
+
+                if ($old_pass && $new_pass && $confirm_pass) {
+                    if ($new_pass !== $confirm_pass) {
+                        $('#checkPassword-msg').html('<div class="alert alert-warning alert-dismissible">' +
+                                '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
+                                '<i class="icon fa fa-check"></i>Xác nhận mật khẩu chưa đúng!</div>');
+                        $('#confirm_pass').focus();
+                    } else {
+                        $.ajax({
+                            url: '/{{ admin_prefix }}/users/change_pass',
+                            type: 'POST',
+                            data: {
+                                user_id: user_id,
+                                old_pass: $old_pass,
+                                new_pass: $new_pass,
+                                confirm_pass: $confirm_pass
+                            }
+                        }).done(function (result) {
+                            if (result.status === 200) {
+                                $('#checkPassword-msg').html('<div class="alert alert-success alert-dismissible">' +
+                                        '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
+                                        '<i class="icon fa fa-check"></i>' + result.content + '</div>');
+                                hideLoading('#confirm_password');
+                            } else if (result.status === 401) {
+                                $('#checkPassword-msg').html('<div class="alert alert-warning alert-dismissible">' +
+                                        '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
+                                        '<i class="icon fa fa-check"></i>' + result.content + '</div>');
+                                hideLoading('#confirm_password');
+                            }
+
+
+                        }).fail(function (err) {
+                            $('#checkPassword-msg').html('<div class="alert alert-error">' + err.message + '</div>');
+                            hideLoading('#confirm_password');
+                        });
+                    }
+                } else {
+                    $('#checkPassword-msg').html('<div class="alert alert-error alert-dismissible">' +
+                            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' +
+                            '<i class="icon fa fa-check"></i>Vui lòng nhập đầy đủ thông tin!</div>');
+                }
+            });
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,136 @@
+.btn,
+.form-control,
+.navbar {
+    border-radius: 0;
+}
+
+.container {
+    font-size: 18px;
+    margin-bottom: 100px;
+}
+
+body,
+small,
+p,
+div {
+    font-family: "Roboto", sans-serif;
+}
+
+.input-row {
+    margin-bottom: 20px;
+}
+
+.input-row .form-control {
+    margin-bottom: 5px;
+}
+
+.input-row .help-text {
+    pointer-events: none;
+    line-height: 20px;
+    color: #888;
+    font-size: 85%;
+    display: none;
+}
+
+.input-row .input-field {
+    border-right: 5px solid #FFF;
+}
+
+.input-row.active .input-field {
+    border-right-color: #38B44A;
+    padding-right: 20px;
+}
+
+.input-row.active .help-text {
+    display: block;
+}
+
+.input-row.error .input-field {
+    border-right-color: #BF3E11;
+    padding-right: 20px;
+}
+
+.input-row.error .help-text {
+    display: block;
+}
+
+.border-green {
+    height: 80%;
+    background: linear-gradient(to right, #388E3C 0, #388E3C 5px, #fff -3px, #fff 72%) no-repeat
+}
+
+.container ul {
+    position: absolute;
+    list-style: none;
+    padding: 15px;
+    margin-left: 50px;
+    color: #607D8B;
+    font-size: 15px;
+    z-index: 2;
+}
+
+.container li:before {
+    margin-left: -15px;
+    margin-right: 6px;
+    margin-top: 9px;
+    line-height: 1em;
+    content: '';
+    float: left;
+    width: .4em;
+    height: .4em;
+    /*border-radius: 50%;*/
+    background-color: #4caf50;
+
+    /*content: "\2605";*/
+    /*margin-left: -15px;*/
+    /*margin-right: 6px;*/
+}
+
+.container li {
+    padding-top: 11px;
+}
+
+.database-info {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 345px;
+    z-index: 1;
+    opacity: 0.1;
+    background-image: url('logo-mongodb-ondark.png');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: 280px;
+    -webkit-transform: rotate(47deg);
+    -moz-transform: rotate(47deg);
+    -ms-transform: rotate(47deg);
+    -o-transform: rotate(47deg);
+    transform: rotate(47deg);
+
+}
+
+@media (max-width: 800px) {
+    .row {
+        margin: 0;
+    }
+
+    .row.padding {
+        padding: 15px;
+    }
+
+    #installCrab {
+        display: initial !important;
+        float: right;
+    }
+}
+
+/*<img height="345px" style="padding-left: 50px;transform: rotate(47deg); opacity: .4"*/
+/*src="logo-mongodb-ondark.png" alt="Mongodb database">*/
+

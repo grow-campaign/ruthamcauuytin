@@ -1,0 +1,87 @@
+{
+  "name": "Crab.JS",
+  "version": "1.0.0",
+  "description": "Lifetime of the research reactor",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha tests",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vietworm/Crab.JS.git"
+  },
+  "keywords": [
+    "life-parser",
+    "nodejs",
+    "WebSphere"
+  ],
+  "author": "Vietworm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vietworm/Crab.JS.git/issues"
+  },
+  "homepage": "https://github.com/Vietworm/Crab.JS.git#readme",
+  "dependencies": {
+    "analytics-node": "^2.1.0",
+    "async": "^2.0.0-rc.2",
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.3.0",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.0",
+    "chalk": "^1.1.3",
+    "checksum": "^0.1.1",
+    "cmdify": "0.0.4",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^3.0.2",
+    "cookie-parser": "^1.4.1",
+    "csprng": "^0.1.1",
+    "csurf": "^1.8.3",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "express-useragent": "^1.0.4",
+    "firebase": "^3.5.3",
+    "firebase-token-generator": "^2.0.0",
+    "formidable": "^1.0.17",
+    "glob": "^7.0.3",
+    "googleapis": "^14.1.0",
+    "helmet": "^3.1.0",
+    "html-minifier": "^3.1.1",
+    "inquirer": "^1.0.0",
+    "install": "^0.8.2",
+    "lodash": "^4.6.1",
+    "method-override": "^2.3.5",
+    "moment": "^2.12.0",
+    "mongoose": "^4.4.10",
+    "morgan": "^1.7.0",
+    "mqtt": "^2.0.1",
+    "node-notifier": "^4.5.0",
+    "nodemailer": "^2.3.0",
+    "nodemailer-sendmail-transport": "^1.0.0",
+    "nodemailer-smtp-transport": "^2.4.1",
+    "nunjucks": "^3.0.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "password-hash": "^1.2.2",
+    "rand-token": "^0.2.1",
+    "serve-favicon": "^2.4.1",
+    "slug": "^0.9.1",
+    "socket.io": "^1.4.5",
+    "uid-safe": "^2.1.3",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "mocha": "^3.1.2",
+    "should": "^11.1.1"
+  },
+  "crabJS": {
+    "language": "en_US",
+    "port": "1337",
+    "admin_prefix": "admin",
+    "theme": "bootstrap"
+  }
+}

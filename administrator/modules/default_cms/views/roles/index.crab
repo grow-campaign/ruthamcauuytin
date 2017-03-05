@@ -1,0 +1,50 @@
+{% extends 'layout.crab' %}
+{% block cssExtends %}
+    {{ super() }}
+{% endblock %}
+
+{% block content_body %}
+    {% for role in roles %}
+        <tr>
+            <td><input type="checkbox" class="check-element" name="ids[]" value="{{ role._id }}"></td>
+            <td><a href="/{{ admin_prefix }}/roles/view/{{ role._id }}">{{ role.name }}</a></td>
+            <td><a href="/{{ admin_prefix }}/users/view/{{ role.created_by._id }}">
+                    <span class="label label-success">{{ role.created_by.display_name }}</span>
+                </a>
+            </td>
+            <td>{{ role.created_at|dateFormat }}</td>
+            <td>
+                {% if role.status == 0 %}
+                    <span class="label label-primary">Kích hoạt</span>
+                {% else %}
+                    <span class="label label-warning">Bản nháp</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block jsExtends %}
+    {{ super() }}
+
+    <script>
+        function deleteRecords() {
+            var ids = [];
+            $("input:checkbox[name='ids[]']:checked").each(function () {
+                ids.push($(this).val());
+            });
+            if (ids.length > 0) {
+                $.ajax({
+                    url: `/{{ admin_prefix }}/roles`,
+                    type: 'DELETE',
+                    data: {
+                        ids: ids
+                    },
+                    success: function (result) {
+                        window.location.href = `/{{ admin_prefix }}/roles`;
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "crab-cms",
+  "private_key_id": "ccdc91ff318633c046f1726fef75a17847f08982",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7P4UVA6s5jByT\nNFZTwSGt2SgPPpAWcOkaZqRJJtGEmVv/0k56ipUNdbqJprXpY+LrBXhMzFAiSGAK\n6/qC1vfJRxtb1C9b8Pb+Wmtcvz0cFDCDzsJhiSrUftOPzoRgeUwCjT9b/wYy0K0F\nGXlRHp2vZRjRSU/B+ysjD6FlFAuTsShSgwzhs7fzzDFSlmG+Tse8I7sbkp6XcO+n\nS4IrRSso9cjO32+Ccf/WPMzxIt8L9Wb0DCRjnet5THY71sQ0V48BfzLorvBidOlZ\njt8ZUsbCq+JBkECOfnH/ixFSl4uYhiQJDU6jBMhU11d1DDdlUeW1Lew8EVSPj5ad\n2ZJI2T0dAgMBAAECggEAUF2S4NISS0C3gvaTlp7ttY/egax4aylK4unq2PqwMhkg\nQ0wgIrgYAQ7mYO4MZX9ZhUVzvIJ0YkJt9kIR4tYgw2Khe2g2a1+gospsCgKKV+LS\nb7/t7a7RkyJb6vzYFA/7b5zv9KwgHO8zU1z7lLVvODhLzoeIk9kZSpMK0jcoQNqs\nKoyh8wiqErqgjTLKYQ5PGyRtId8SWAb23OuloGoYQpyAx3peWQ2xN03+7UZSOU6A\n3diTP5nsmPaqZFUXE0Mta9W5xMF+RunHy4wWxeDY4r8QAQJq3tHYvsgwar5XNI4m\nea6Y/InQoPjT3s9AKMXo8R9oHM5VKagr92t4fCf8gQKBgQDl1cRL7ko4uQiHUg1W\nHzqsLpzsAk4o6ivJNZgozn3jY633n8Tczr2DZHOxBjEzJl5VFKVi2/f43kcZ1JTQ\nYhEucfXN8s56FCBX3TpCatFaaes3zj3WBq/p8jPGHit2hrjJXruSIrbij3lZBkD4\n85cusBKlDljsjxFBp3UCzTkouwKBgQDQkJ1wR8ZtzAzhjsaS3g2NogbhGSgGgRAC\nS4Z5lI2udnTtsHVjDZavqEEwWPwpIilTSg4QPGNvFZpyACnSQLUKzKsgkbu9ADRl\n5ZQUzN7sKxnn5sbN1QPnt//IjpKCHNIPKbDNSrDMoEsqMeV3BHWHoSKe4FZi1R97\naO2W/FlgBwKBgQC57neA3eNZhAcsQercEyOKC6OTIkJMwzRs8FiKGpKpFAi23J+L\n6gxScT9OpK3ErXN+7Nbm5QD0ag2nDdzdv5gatMKfu5/iDsojiqsI9BUtSaaqXMSV\nko9ZeUD9M4cBufdfoK2piT/ehScsJ+0D+TwC3xoWQUcbCJpzPJ9ihteI5QKBgGxQ\nHiM4czmENdBR6JhPT3SVh8MQ4HN4RUsb0+uCFY5cIF9sO5pEbVQuKiSkodfu0M1b\ncTBHXFBNRNcddJqnVh4Uqm6QoJIH8C5W6u9ecgruW1bOx8IPdSa6rNCIElgWBZUw\nToxe1LCAMmjoXsXPgAX+zc76rIJJMj9R/8lgpj2zAoGBAMspENH0MBb7+ho4YwDI\nOnr7Ez3F/JeFm11HgP8ZYJn962/y2swahfR72vBfEwQ3sfsoFHEaPo0dkarxkRMe\nU+KsfAepofKnJSH+AE+FDt2j6qJHkJyhw5p/T4YkCR8+9u8T+lvQmG4rEXWMRaci\noAnfr989WRM91HdtKgCy6/v8\n-----END PRIVATE KEY-----\n",
+  "client_email": "crab-cms@crab-cms.iam.gserviceaccount.com",
+  "client_id": "116827723148197924391",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/crab-cms%40crab-cms.iam.gserviceaccount.com"
+}
