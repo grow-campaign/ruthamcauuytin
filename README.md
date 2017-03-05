@@ -14,6 +14,10 @@ Dự án website giới thiệu sản phẩm và dịch vụ cho công ty Duy B�
 
 **Văn phòng làm việc:** Ha Noi Sunshine Summer :sunrise:
 
+## Âm nhạc :heart_eyes:
+
+~ [Sugar - Maroon 5 / Lia Kim Choreography](https://www.youtube.com/watch?v=96Xd1lzbfLk)
+
 ## Cài đặt và sử dụng
 
 **Bước 1:** Tải dự án về máy tính và cài đặt các `node_modules` cần cho dự án
