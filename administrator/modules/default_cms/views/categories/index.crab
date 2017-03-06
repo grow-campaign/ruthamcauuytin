@@ -85,7 +85,7 @@
 
                         var content = `<div class="col-md-12 col-sm-12 col-xs-12 flashBox" style="padding-top: 15px"><div class="alert alert-${type} alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        <i class="icon fa ${icon_class}"></i>${response.message}</div></div>`;
+                                        <i class="icon fa ${icon_class}"></i>Bạn chưa có quyền chỉnh sửa thông tin danh mục</div></div>`;
                         wrap.prepend(content);
                     }
                 }

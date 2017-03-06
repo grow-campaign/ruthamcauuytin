@@ -7,7 +7,7 @@
             {% if user.settings.menu %}
                 {{ user.settings.menu|safe }}
             {% else %}
-                {{ 'Hệ thống,ILearn'|get_menu_data(user) }}
+                {{ 'Hệ thống'|get_menu_data(user) }}
             {% endif %}
         </ul>
         <!-- /.sidebar-menu -->

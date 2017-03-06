@@ -147,45 +147,6 @@
                     <!-- /.row -->
                 </div>
                 <!-- ./box-body -->
-                <div class="box-footer">
-                    <div class="row">
-                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                            <div class="progress-group">
-                                <span class="progress-text">Add Products to Cart</span>
-                                <span class="progress-number"><b>160</b>/200</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                            <div class="progress-group">
-                                <span class="progress-text">Complete Purchase</span>
-                                <span class="progress-number"><b>310</b>/400</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-xs-4 text-center">
-                            <div class="progress-group">
-                                <span class="progress-text">Visit Premium Page</span>
-                                <span class="progress-number"><b>480</b>/800</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.box-footer -->
             </div>
         </div>
         <div class="col-md-4">
