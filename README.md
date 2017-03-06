@@ -2,6 +2,14 @@
 
 ### Xem trang web: ([http://ruthamcauuytin.net](http://ruthamcauuytin.net))
 
+Đăng nhập vào hệ thống tại địa chỉ: [http://ruthamcauuytin.net/admin](http://ruthamcauuytin.net/admin/dashboard)
+
+```
+Tài khoản: admin@100dayproject.org
+Mật khẩu: social
+```
+
+
 Dự án website giới thiệu sản phẩm và dịch vụ cho công ty Duy Bảo (chuyên cung cấp dịch vụ, giải pháp để xử lý ô nhiểm môi trường), được xây dựng theo kiến trúc `monolithic`, sử dụng `Node.js` là ngôn ngữ chính của toàn dự án. 
 
 > :cocktail: Sử dụng [crab.js](https://github.com/crabjs/crabjs-cms) cms để phát triển dự án.
