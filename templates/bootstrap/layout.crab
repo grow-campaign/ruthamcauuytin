@@ -181,25 +181,32 @@
                                             <div class="col-md-3 equal-height-in">
                                                 <ul class="list-unstyled equal-height-list">
                                                     <li><h3>Thông cống nghẹt</h3></li>
-                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông cống nghẹt Quận Tân Bình</a></li>
-                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông cống nghẹt Quận Bình Thạnh</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông cống nghẹt Quận Tân
+                                                            Bình</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông cống nghẹt Quận
+                                                            Bình Thạnh</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-md-3 equal-height-in">
                                                 <ul class="list-unstyled equal-height-list">
                                                     <li><h3>Nạo vét hố ga</h3></li>
                                                     {% for i in range(0,12) %}
-                                                        <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận {{ loop.index }}</a></li>
+                                                        <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga
+                                                                Quận {{ loop.index }}</a></li>
                                                     {% endfor %}
-                                                    <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận Tân Bình</a></li>
-                                                    <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận Bình Thạnh</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận Tân
+                                                            Bình</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Nạo vét hố ga Quận Bình
+                                                            Thạnh</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-md-3 equal-height-in">
                                                 <ul class="list-unstyled equal-height-list">
                                                     <li><h3>Thông tắc bể phốt</h3></li>
-                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông tắc bể phốt Quận Tân Bình</a></li>
-                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông tắc bể phốt Quận Bình Thạnh</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông tắc bể phốt Quận
+                                                            Tân Bình</a></li>
+                                                    <li><a href="#"><i class="fa fa-flask"></i>Thông tắc bể phốt Quận
+                                                            Bình Thạnh</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -236,7 +243,9 @@
                                                     <li><a href="#">Gym</a></li>
                                                     <li><a href="#">Lawyer</a></li>
                                                     <li><a href="#">Mobile App</a></li>
-                                                    <li><a href="#">Music<small class="color-red">New</small></a></li>
+                                                    <li><a href="#">Music
+                                                            <small class="color-red">New</small>
+                                                        </a></li>
                                                     <li><a href="#">Real Estate</a></li>
                                                     <li><a href="#">Restaurant</a></li>
                                                 </ul>
@@ -342,7 +351,8 @@
                         <ul class="list-unstyled link-list">
                             <li><a href="/gioi-thieu">Về chúng tôi</a><i class="fa fa-angle-right"></i></li>
                             <li><a href="/lien-he">Liên hệ với chúng tôi</a><i class="fa fa-angle-right"></i></li>
-                            <li><a target="_blank" href="http://100dayproject.org">Nhận thiết kế website</a><i class="fa fa-angle-right"></i></li>
+                            <li><a target="_blank" href="http://100dayproject.org">Nhận thiết kế website</a><i
+                                        class="fa fa-angle-right"></i></li>
                         </ul>
                     </div>
                     <!-- End Link List -->
@@ -427,7 +437,25 @@
 <![endif]-->
 
 <div id="fb-root"></div>
-<script>(function (d, s, id) {
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-53225314-5', 'auto');
+    ga('send', 'pageview');
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1944865679068939',
+            xfbml: true,
+            version: 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s);

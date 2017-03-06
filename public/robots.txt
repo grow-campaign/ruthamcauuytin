@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /images/_whynotbar.png
